@@ -1,6 +1,5 @@
 <p align="center">
 <a href="https://ibb.co/kJzZTmP"><img src="https://i.ibb.co/FXcp1Hd/vector-illustration-of-semar-ai.png"</a>
-<p algin="center">
 <a href="https://github.com/dcode-denpa/Semar-BMD"><img src="https://img.shields.io/badge/Semar WhatsApp Bot-silver?style=for-the-badge"></a>
 <p align="center">
 <a href="https://github.com/dcode-denpa/Semar-BMD"><img src="https://img.shields.io/github/watchers/dcode-denpa/Semar-BMD.svg"</a>
