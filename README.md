@@ -6,10 +6,16 @@
 <a href="https://github.com/dcode-denpa/Semar-BMD"><img src="https://img.shields.io/github/stars/dcode-denpa/Semar-BMD.svg"</a>
 <a href="https://github.com/dcode-denpa/Semar-BMD"><img src="https://img.shields.io/github/forks/dcode-denpa/Semar-BMD.svg"</a>
 <a href="https://github.com/dcode-denpa/Semar-BMD"><img src="https://img.shields.io/github/repo-size/dcode-denpa/Semar-BMD.svg"></a>
-<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" height="3"></img>
+
+***
+
 <details close="close">
 <summary><b>Contact</summary>
 <a href="http://wa.me/62885866295942"><img src="https://img.shields.io/badge/Whatsapp-30302f?style=flat&logo=whatsapp"></a>
 <a href="http://www.instagram.com/dcodedenpa/"><img src="https://img.shields.io/badge/Instagram-30302f?style=flat&logo=instagram"></a>
+</details>
+
+<details close="close">
+<summary><b>Install</summary>
 <img src="https://www.animatedimages.org/data/media/562/animated-line-image-0019.gif"></img>
 </details>
