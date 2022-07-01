@@ -11,5 +11,3 @@
 <a href="https://github.com/dcode-denpa/Semar-BMD"><img src="https://img.shields.io/github/repo-size/dcode-denpa/Semar-BMD?label=Repo%20size&style=flat"></a>
 
 ***
-
-# Coming Soon
