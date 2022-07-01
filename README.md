@@ -8,7 +8,7 @@
 <a href="https://github.com/dcode-denpa/Semar-BMD"><img src="https://img.shields.io/github/repo-size/dcode-denpa/Semar-BMD.svg"></a>
 <img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" height="2"></img>
 <details close="close">
-<summary>contact</summary>
+<summary>Contact</summary>
 <a href="http://wa.me/62885866295942"><img src="https://img.shields.io/badge/Whatsapp-30302f?style=flat&logo=whatsapp"></a>
 <a href="http://www.instagram.com/dcodedenpa/"><img src="https://img.shields.io/badge/Instagram-30302f?style=flat&logo=instagram"></a>
 <img src="https://www.animatedimages.org/data/media/562/animated-line-image-0019.gif" width="1920" height=""></img>
