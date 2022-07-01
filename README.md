@@ -10,10 +10,7 @@
 ***
 
 <details close="close">
-<summary><a href="#"><img src="https://img.shields.io/badge/-Denis%20Putra-1abc9c.svg"</a></summary>
-<a href="http://wa.me/6282223014661" target="blank"><img src="https://img.shields.io/badge/Whatsapp-30302f?style=flat&logo=whatsapp" /></a>
-<a href="http://www.instagram.com/mrf.zvx/" target="blank"><img src="https://img.shields.io/badge/Instagram-30302f?style=flat&logo=instagram" /></a>
-<a href="https://www.facebook.com/profile.php?id=100028409167054" target="blank"><img src="https://img.shields.io/badge/Facebook-30302f?style=flat&logo=facebook" /></a>
+<summary>contact</summary>
+<a href="http://wa.me/62885866295942" target="blank"><img src="https://img.shields.io/badge/Whatsapp-30302f?style=flat&logo=whatsapp" /></a>
+<a href="http://www.instagram.com/dcodedenpa/" target="blank"><img src="https://img.shields.io/badge/Instagram-30302f?style=flat&logo=instagram" /></a>
 </details>
-
-<marquee behavior="alternate" onmouseover="this.stop()" onmouseout="this.start()">MARQUEE BERGERAK BOLAK-BALIK</marquee>
