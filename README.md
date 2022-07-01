@@ -6,6 +6,6 @@
 <a href="https://github.com/dcode-denpa/Semar-BMD"><img src="https://img.shields.io/github/stars/dcode-denpa/Semar-BMD.svg"</a>
 <a href="https://github.com/dcode-denpa/Semar-BMD"><img src="https://img.shields.io/github/downloads/dcode-denpa/Semar-BMD/total.svg"</a>
 <a href="https://github.com/dcode-denpa/Semar-BMD"><img src="https://img.shields.io/github/forks/dcode-denpa/Semar-BMD.svg"</a>
-<a href="https://github.com/dcode-denpa/Semar-BMD"><img src="https://img.shields.io/github/repo-size/dcode-denpa/Semar-BMD?label=Repo%20size&style=flat"></a>
+<a href="https://github.com/dcode-denpa/Semar-BMD"><img src="https://img.shields.io/github/repo-size/dcode-denpa/Semar-BMD?label=repo%20size&style=flat"></a>
 
 ***
