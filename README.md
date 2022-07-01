@@ -21,4 +21,4 @@
 </details>
 
 
-### jangan reupload banh <img src="https://www.animatedimages.org/data/media/2113/animated-3d-smiley-image-0011.gif" width="30">
+<sup>jangan reupload banh</sup> <img src="https://www.animatedimages.org/data/media/2113/animated-3d-smiley-image-0011.gif" width="30">
