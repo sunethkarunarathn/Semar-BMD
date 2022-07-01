@@ -6,7 +6,6 @@
 <a href="https://github.com/dcode-denpa/Semar-BMD"><img src="https://img.shields.io/github/stars/dcode-denpa/Semar-BMD.svg"</a>
 <a href="https://github.com/dcode-denpa/Semar-BMD"><img src="https://img.shields.io/github/forks/dcode-denpa/Semar-BMD.svg"</a>
 <a href="https://github.com/dcode-denpa/Semar-BMD"><img src="https://img.shields.io/github/repo-size/dcode-denpa/Semar-BMD.svg"></a>
-
 <img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" height="2"></img>
 
 <details close="close">
