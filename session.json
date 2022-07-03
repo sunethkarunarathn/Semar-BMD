@@ -6065,7 +6065,7 @@
               "baseKey": "Bav9D3gEZ33Q1D+bg1IecjA9FGySVPMMxOK9rQxIyM4M",
               "baseKeyType": 2,
               "closed": -1,
-              "used": 1656818123994,
+              "used": 1656819371494,
               "created": 1656754987028,
               "remoteIdentityKey": "BUbR5AQWH9GPCSYAWGPHmfVLK68D66qCrshPIAWzgVJn"
             },
@@ -6301,12 +6301,15 @@
               },
               "Bcj6MKPVEj++5zOiiN6ghoDSdQ+k0XY1Rzaao53xGfoB": {
                 "chainKey": {
-                  "counter": 33,
-                  "key": "mt4RVE0UsHk83rodTh/2CSV0itHyx9w/Ktc0QBeTAOo="
+                  "counter": 47,
+                  "key": "TV9rRCpsYKp5SiCz/1w48w6IBW/VnmyGfntokzqSlnY="
                 },
                 "chainType": 2,
                 "messageKeys": {
-                  "11": "mz6LnTxL2s1Jr8h/9YkzxGa+TEHq2EbqTU+aGQWwaqY="
+                  "11": "mz6LnTxL2s1Jr8h/9YkzxGa+TEHq2EbqTU+aGQWwaqY=",
+                  "44": "HDJp+UqLJ0lDW30H4KQ7T/prx3i2NYIMep3o2rrVwT0=",
+                  "45": "GZ/6O8QGb8BFHTDXhJhUgS1UPVN7PpYfzC3cv2n9I0M=",
+                  "46": "rWxAy/o1Jxx05n0vMPJ/5I+V0suf96NedVya66qFQjw="
                 }
               },
               "BTAXyumYSXp/8WlH5gxOKV/aH/2I9zaRMsAz5uACuzo1": {
@@ -6518,8 +6521,8 @@
             "_chains": {
               "BQd+NJKpkq3rGaaIREx4oAu+NB1OJCkyzkL9R7GmTg42": {
                 "chainKey": {
-                  "counter": 19,
-                  "key": "3lIbOs2JOg02cTgUM9DYHNbs5Jz9pzhoreQcLkyROp0="
+                  "counter": 22,
+                  "key": "ppeHzwlQEbJKbXAVcVz/TJZi3hAm3/9T40gLZ5/7H0o="
                 },
                 "chainType": 2,
                 "messageKeys": {
@@ -9039,7 +9042,7 @@
             "indexInfo": {
               "baseKey": "BfB6WxvFElHbZofj76lyU1Lc5XdvBjLoABAu5Lvum7MI",
               "baseKeyType": 1,
-              "closed": -1,
+              "closed": 1656819376725,
               "used": 1656789655269,
               "created": 1656789655269,
               "remoteIdentityKey": "BV72cUm2IPc0xoeUF9QRj0kqGhXgtExTPtrY5/EussQb"
@@ -9058,6 +9061,41 @@
               "signedKeyId": 13478744,
               "baseKey": "BfB6WxvFElHbZofj76lyU1Lc5XdvBjLoABAu5Lvum7MI",
               "preKeyId": 602
+            }
+          },
+          "BXCVu3Bl3cuVeUnTKly7+JArzt9lfGu8ti/sAqgu3zp9": {
+            "registrationId": 521177737,
+            "currentRatchet": {
+              "ephemeralKeyPair": {
+                "pubKey": "BRg67wEbdu9oxp+uPdRRiP8y7N0lLYF5HGT9VmODc6Uc",
+                "privKey": "EIho30axtLbY0t5HbW5ccg0YXvwuaS328bQcV/aPOUk="
+              },
+              "lastRemoteEphemeralKey": "BQL1/cxRuVgjOiL8Oo/og8DPGSIG9/O4gHnZUT7Bpj5f",
+              "previousCounter": 0,
+              "rootKey": "gHJKFq/aOVukKV7BnM1VRawwR6K5tfVjfvwDrs0xSZk="
+            },
+            "indexInfo": {
+              "baseKey": "BXCVu3Bl3cuVeUnTKly7+JArzt9lfGu8ti/sAqgu3zp9",
+              "baseKeyType": 1,
+              "closed": -1,
+              "used": 1656819376697,
+              "created": 1656819376697,
+              "remoteIdentityKey": "BV72cUm2IPc0xoeUF9QRj0kqGhXgtExTPtrY5/EussQb"
+            },
+            "_chains": {
+              "BRg67wEbdu9oxp+uPdRRiP8y7N0lLYF5HGT9VmODc6Uc": {
+                "chainKey": {
+                  "counter": -1,
+                  "key": "pVPwX7wEJYdLsYNR7QUgS4DVDaLMDE07Qe8fyXZD2XY="
+                },
+                "chainType": 1,
+                "messageKeys": {}
+              }
+            },
+            "pendingPreKey": {
+              "signedKeyId": 13478744,
+              "baseKey": "BXCVu3Bl3cuVeUnTKly7+JArzt9lfGu8ti/sAqgu3zp9",
+              "preKeyId": 654
             }
           }
         },
@@ -11519,7 +11557,7 @@
               "baseKey": "BaQCJls5zUE6IJ3AyEDJduFMp4rqHVXbCrzTNZuWrEpZ",
               "baseKeyType": 2,
               "closed": -1,
-              "used": 1656818113838,
+              "used": 1656819255161,
               "created": 1656789627297,
               "remoteIdentityKey": "BTkjiH07D2z56X18ns6UEHMmvMEeIHMgmQ1oKCaqSu9K"
             },
@@ -11547,8 +11585,8 @@
               },
               "BYX4vtAwAGarYx/NtDwdjg8I0oZqW/l6UZOuoIz5zuNG": {
                 "chainKey": {
-                  "counter": 2,
-                  "key": "+kpdlS0nwBmwIwFWhimN4Biy+Ilo2jLC9tUzRO35hgc="
+                  "counter": 3,
+                  "key": "arDqEVevjhMbHavvaIR/411pd2hO1GzBZnTk+k5Cvq8="
                 },
                 "chainType": 2,
                 "messageKeys": {}
@@ -12939,8 +12977,8 @@
             "_chains": {
               "Bdg+mfcUandGfHFmKvWMSM1aDZ/NyYtor0qkqbbhGRR3": {
                 "chainKey": {
-                  "counter": 9,
-                  "key": "EESayJK4JzcXqvdNbKI5IE2nVRhks4OfVB8IYI35soo="
+                  "counter": 10,
+                  "key": "eAGb0ZGN48AVL1CRQOfbWhL/UCsINZCjvuLw1Clqfrs="
                 },
                 "chainType": 2,
                 "messageKeys": {
@@ -18829,7 +18867,7 @@
               "baseKey": "BTS9TEsz10dEFDxBVinrDNv/jTf0n8FHtM8LfkPdsFBE",
               "baseKeyType": 2,
               "closed": -1,
-              "used": 1656818124254,
+              "used": 1656819281330,
               "created": 1656789392132,
               "remoteIdentityKey": "BVq7E0IFjasRw/V6nAMygfXWWMF1wUv2VasstR3rufUk"
             },
@@ -18850,8 +18888,8 @@
               },
               "Bdpz4r15zPpyfvrhCP7C19DdMTvgGvUKkxLvVIRvkYB8": {
                 "chainKey": {
-                  "counter": 31,
-                  "key": "2SuaD/z7UFeJtA2yfER8qvR9ijpPNdlU2XGCWKkpHfc="
+                  "counter": 46,
+                  "key": "abL7xUTRYU0B5TgX83pOdELvuDaoYk/toBkDQL/at7k="
                 },
                 "chainType": 2,
                 "messageKeys": {}
@@ -26744,6 +26782,27 @@
           },
           "senderSigningKey": {
             "public": "BaLD38lKoNoFnue7SUYOYJRYjXL9Epv2CL0HKB/B0OYS"
+          },
+          "senderMessageKeys": []
+        },
+        {
+          "senderKeyId": 2031829104,
+          "senderChainKey": {
+            "iteration": 0,
+            "seed": "BOmx79A29EPevzDLsxoAGpRciGMD5NRbRVaLI5XfOwc="
+          },
+          "senderSigningKey": {
+            "public": "BY+b2fhc0M1X5ORNptav/UPwkAQ6c2+v07R/VjNSB9Iq"
+          }
+        },
+        {
+          "senderKeyId": 312722706,
+          "senderChainKey": {
+            "iteration": 0,
+            "seed": "b9D1+7ePE1Sc7SdmIQgrpJEsFxMSrzqPzpp0vW+xhmk="
+          },
+          "senderSigningKey": {
+            "public": "BYDQE+kdK0P4mnJ+ra9JRESPCfFT1Lt4pm9FjcZzmPsv"
           }
         }
       ],
@@ -27882,8 +27941,8 @@
         {
           "senderKeyId": 1605492922,
           "senderChainKey": {
-            "iteration": 53,
-            "seed": "Ljvbdn9tTDQU8B9gievVel7+vHE64sjVhV9aNfkW2Nw="
+            "iteration": 68,
+            "seed": "uD33t+IfB9ZqVOLHJxILHbkLAaGHnBuBbWp0R8VUACw="
           },
           "senderSigningKey": {
             "public": "BeQioFVCAKb/A2wGObHlb5/Jw9fUpUIOSD+4YJz0i3EB"
@@ -28341,12 +28400,15 @@
         {
           "senderKeyId": 2056930800,
           "senderChainKey": {
-            "iteration": 8,
-            "seed": "LOZTc0Ptc00yaBT+56BTZwnvXAusIgrAQf6WsciSBnY="
+            "iteration": 22,
+            "seed": "uPh1FyYxhJ4nTUqA52TrNwJ5yXePtFyp2tvF4pP7k9E="
           },
           "senderSigningKey": {
             "public": "Bamh+T+E4FsRR/kBFNCBYSGkSJaZ021yTuj5xckYHBkh"
-          }
+          },
+          "senderMessageKeys": [
+            {}
+          ]
         }
       ],
       "6285866295942-1623004283@g.us::6288971792615:24::0": [
@@ -29184,8 +29246,8 @@
         {
           "senderKeyId": 1285109777,
           "senderChainKey": {
-            "iteration": 64,
-            "seed": "fQYo8b/WD2uTNMnopyaBI6NOc+HSn+PQherBRBJW84s="
+            "iteration": 88,
+            "seed": "G7Lmvr1Jx6vt77HsDYNg4u8mYEaSrYvgkOofL20vwr0="
           },
           "senderSigningKey": {
             "public": "Ba/mDq0OeI7NLSbknowwUwVZO/9qzXzNQO2CgMiY+dEh"
@@ -29904,7 +29966,8 @@
           },
           "senderSigningKey": {
             "public": "Ba/mDq0OeI7NLSbknowwUwVZO/9qzXzNQO2CgMiY+dEh"
-          }
+          },
+          "senderMessageKeys": []
         },
         {
           "senderKeyId": 1285109777,
@@ -29914,7 +29977,8 @@
           },
           "senderSigningKey": {
             "public": "Ba/mDq0OeI7NLSbknowwUwVZO/9qzXzNQO2CgMiY+dEh"
-          }
+          },
+          "senderMessageKeys": []
         },
         {
           "senderKeyId": 1285109777,
@@ -29924,7 +29988,19 @@
           },
           "senderSigningKey": {
             "public": "Ba/mDq0OeI7NLSbknowwUwVZO/9qzXzNQO2CgMiY+dEh"
-          }
+          },
+          "senderMessageKeys": []
+        },
+        {
+          "senderKeyId": 1285109777,
+          "senderChainKey": {
+            "iteration": 64,
+            "seed": "fQYo8b/WD2uTNMnopyaBI6NOc+HSn+PQherBRBJW84s="
+          },
+          "senderSigningKey": {
+            "public": "Ba/mDq0OeI7NLSbknowwUwVZO/9qzXzNQO2CgMiY+dEh"
+          },
+          "senderMessageKeys": []
         }
       ],
       "status@broadcast::6281912485788::0": [
@@ -31069,7 +31145,8 @@
           },
           "senderSigningKey": {
             "public": "Bf5fE2e5H1GzigNUUHXMZkJTEWuXtGfHF5Dy7fsSRjRA"
-          }
+          },
+          "senderMessageKeys": []
         },
         {
           "senderKeyId": 935845078,
@@ -31079,7 +31156,19 @@
           },
           "senderSigningKey": {
             "public": "BSo4A9wj6gtuuqSwpFrpwMr2To/4Exi/+sJiAxYxP61c"
-          }
+          },
+          "senderMessageKeys": []
+        },
+        {
+          "senderKeyId": 759445720,
+          "senderChainKey": {
+            "iteration": 4,
+            "seed": "p9VTrhyRnJaoC3y+1ngV/V8zqBNjTyFjyOSXXyowT68="
+          },
+          "senderSigningKey": {
+            "public": "BVtY40dLIa1u7SwHs5fpEPIP8eMfKVbLEprzuC/kI5sE"
+          },
+          "senderMessageKeys": []
         }
       ],
       "status@broadcast::6283145156995::0": [
@@ -35284,8 +35373,8 @@
         {
           "senderKeyId": 2106673874,
           "senderChainKey": {
-            "iteration": 34,
-            "seed": "XozLVOaKJlozMiwFGcvHEQNL7Rvswc6tTsain3uIndU="
+            "iteration": 41,
+            "seed": "Y87sC3k+Ol+TIS2KvLQKfCDvfyevAfKlcPWGY8hh8oI="
           },
           "senderSigningKey": {
             "public": "BeUGNERfije8XD5I22J/Rel0k0I0RyqmGqD4a2X0G0Ux"
@@ -36957,8 +37046,8 @@
         {
           "senderKeyId": 334387127,
           "senderChainKey": {
-            "iteration": 70,
-            "seed": "qiz1lkUxGd4DevfzFnwSB6m7khxAPKvYWlw/IGORwH4="
+            "iteration": 100,
+            "seed": "ySEQnavo97KlCLp47NyxYH4/TFB9VL4NSuzgf2E514E="
           },
           "senderSigningKey": {
             "public": "BQdutAdSZWoyDt52moX2BEXa9rKfzW+qeOlNoMNihYoX"
@@ -37439,12 +37528,13 @@
         {
           "senderKeyId": 1877571068,
           "senderChainKey": {
-            "iteration": 1,
-            "seed": "h7pkMlmFlcw9BM37HcxuzMVI2UB5vbVZLxcgWX6WYAU="
+            "iteration": 2,
+            "seed": "uh/PgTJLIl5CbMPxLqgsUIMiEzA9dXQzfHAlcHXu3pA="
           },
           "senderSigningKey": {
             "public": "BdP5k9XGEVC/WLtB4cN1gJEghjTh8F9cgEeDasnlMMQZ"
-          }
+          },
+          "senderMessageKeys": []
         }
       ],
       "6281390852597-1620724255@g.us::6285707619495::0": [
@@ -37767,160 +37857,7 @@
       "regular_low": null
     },
     "senderKeyMemory": {
-      "6285866295942-1623004283@g.us": {
-        "6282128346878@s.whatsapp.net": true,
-        "6285261893025@s.whatsapp.net": true,
-        "6285866295942@s.whatsapp.net": true,
-        "994401555791@s.whatsapp.net": true,
-        "6283139122621@s.whatsapp.net": true,
-        "6285822037308@s.whatsapp.net": true,
-        "917736716373@s.whatsapp.net": true,
-        "6283895179312@s.whatsapp.net": true,
-        "994400295560@s.whatsapp.net": true,
-        "601162376540@s.whatsapp.net": true,
-        "687958182@s.whatsapp.net": true,
-        "687958182:12@s.whatsapp.net": true,
-        "687958182:13@s.whatsapp.net": true,
-        "687958182:14@s.whatsapp.net": true,
-        "6281250513987@s.whatsapp.net": true,
-        "66654381463@s.whatsapp.net": true,
-        "62881010291169@s.whatsapp.net": true,
-        "62881010291169:3@s.whatsapp.net": true,
-        "6281331005552@s.whatsapp.net": true,
-        "919526433047@s.whatsapp.net": true,
-        "919526433047:14@s.whatsapp.net": true,
-        "212684241664@s.whatsapp.net": true,
-        "6281254162845@s.whatsapp.net": true,
-        "6283813136123@s.whatsapp.net": true,
-        "6283813136123:15@s.whatsapp.net": true,
-        "6283890780896@s.whatsapp.net": true,
-        "6287728419016@s.whatsapp.net": true,
-        "6289522943816@s.whatsapp.net": true,
-        "553488341173@s.whatsapp.net": true,
-        "553488341173:18@s.whatsapp.net": true,
-        "212766307923@s.whatsapp.net": true,
-        "994407415260@s.whatsapp.net": true,
-        "6288239284194@s.whatsapp.net": true,
-        "917736622139@s.whatsapp.net": true,
-        "6281239122847@s.whatsapp.net": true,
-        "6282252509320@s.whatsapp.net": true,
-        "93788830090@s.whatsapp.net": true,
-        "6281933385492@s.whatsapp.net": true,
-        "6282296368892@s.whatsapp.net": true,
-        "919947291867@s.whatsapp.net": true,
-        "919947291867:5@s.whatsapp.net": true,
-        "62881010183386@s.whatsapp.net": true,
-        "919446697883@s.whatsapp.net": true,
-        "919446697883:6@s.whatsapp.net": true,
-        "6282180026483@s.whatsapp.net": true,
-        "6281555807465@s.whatsapp.net": true,
-        "6283826125112@s.whatsapp.net": true,
-        "628990874944@s.whatsapp.net": true,
-        "628990874944:5@s.whatsapp.net": true,
-        "6281223991090@s.whatsapp.net": true,
-        "6288290392300@s.whatsapp.net": true,
-        "6281912485788@s.whatsapp.net": true,
-        "6285775559293@s.whatsapp.net": true,
-        "6285775559293:7@s.whatsapp.net": true,
-        "6281333782061@s.whatsapp.net": true,
-        "6287762601963@s.whatsapp.net": true,
-        "972528918513@s.whatsapp.net": true,
-        "6289501060783@s.whatsapp.net": true,
-        "6285338653513@s.whatsapp.net": true,
-        "62895421289849@s.whatsapp.net": true,
-        "6285156431769@s.whatsapp.net": true,
-        "6285736463285@s.whatsapp.net": true,
-        "6285607220405@s.whatsapp.net": true,
-        "6289669519301@s.whatsapp.net": true,
-        "6288214273207@s.whatsapp.net": true,
-        "6285870576689@s.whatsapp.net": true,
-        "919207189625@s.whatsapp.net": true,
-        "919207189625:30@s.whatsapp.net": true,
-        "923320122439@s.whatsapp.net": true,
-        "6287750126091@s.whatsapp.net": true,
-        "6288971792615@s.whatsapp.net": true,
-        "6288971792615:24@s.whatsapp.net": true,
-        "628983583288@s.whatsapp.net": true,
-        "919446088620@s.whatsapp.net": true,
-        "6283194683184@s.whatsapp.net": true,
-        "6287724880504@s.whatsapp.net": true,
-        "6287724880504:26@s.whatsapp.net": true,
-        "6285270881725@s.whatsapp.net": true,
-        "6285856747935@s.whatsapp.net": true,
-        "6281539336834@s.whatsapp.net": true,
-        "6285806157712@s.whatsapp.net": true,
-        "94766123826@s.whatsapp.net": true,
-        "972529777774@s.whatsapp.net": true,
-        "6283159910163@s.whatsapp.net": true,
-        "6285751406851@s.whatsapp.net": true,
-        "60102501321@s.whatsapp.net": true,
-        "6289649480997@s.whatsapp.net": true,
-        "6281284745140@s.whatsapp.net": true,
-        "6283167628535@s.whatsapp.net": true,
-        "6282135746983@s.whatsapp.net": true,
-        "6289512871985@s.whatsapp.net": true,
-        "212696093857@s.whatsapp.net": true,
-        "6287708950624@s.whatsapp.net": true,
-        "6281327919328@s.whatsapp.net": true,
-        "6281578301106@s.whatsapp.net": true,
-        "14155285587@s.whatsapp.net": true,
-        "6285727091924@s.whatsapp.net": true,
-        "6289652948525@s.whatsapp.net": true,
-        "972526457995@s.whatsapp.net": true,
-        "6285275447410@s.whatsapp.net": true,
-        "6287782185321@s.whatsapp.net": true,
-        "6281339500415@s.whatsapp.net": true,
-        "919747476165@s.whatsapp.net": true,
-        "919747476165:16@s.whatsapp.net": true,
-        "6285372524595@s.whatsapp.net": true,
-        "6283188609041@s.whatsapp.net": true,
-        "6282285161267@s.whatsapp.net": true,
-        "6281258114080@s.whatsapp.net": true,
-        "6282228091204@s.whatsapp.net": true,
-        "60177520343@s.whatsapp.net": true,
-        "6282141723028@s.whatsapp.net": true,
-        "35797891220@s.whatsapp.net": true,
-        "5519996167385@s.whatsapp.net": true,
-        "34631259549@s.whatsapp.net": true,
-        "94764223494@s.whatsapp.net": true,
-        "6282331660134@s.whatsapp.net": true,
-        "6281803016899@s.whatsapp.net": true,
-        "917003213983@s.whatsapp.net": true,
-        "917003213983:18@s.whatsapp.net": true,
-        "919778406059@s.whatsapp.net": true,
-        "62895395342125@s.whatsapp.net": true,
-        "918078344125@s.whatsapp.net": true,
-        "918078344125:9@s.whatsapp.net": true,
-        "6281353167736@s.whatsapp.net": true,
-        "6287721317870@s.whatsapp.net": true,
-        "6285781939916@s.whatsapp.net": true,
-        "62882003150560@s.whatsapp.net": true,
-        "687718888@s.whatsapp.net": true,
-        "687718888:1@s.whatsapp.net": true,
-        "687718888:2@s.whatsapp.net": true,
-        "6282144572368@s.whatsapp.net": true,
-        "94711117547@s.whatsapp.net": true,
-        "919895823783@s.whatsapp.net": true,
-        "6283892621986@s.whatsapp.net": true,
-        "6281221280232@s.whatsapp.net": true,
-        "6288218238366@s.whatsapp.net": true,
-        "212605788425@s.whatsapp.net": true,
-        "6285691626845@s.whatsapp.net": true,
-        "6285156647797@s.whatsapp.net": true,
-        "6285156647797:1@s.whatsapp.net": true,
-        "601130023645@s.whatsapp.net": true,
-        "601130023645:45@s.whatsapp.net": true,
-        "918149963853@s.whatsapp.net": true,
-        "918149963853:32@s.whatsapp.net": true,
-        "13126259370@s.whatsapp.net": true,
-        "6282363639012@s.whatsapp.net": true,
-        "6281220255081@s.whatsapp.net": true,
-        "917012157226@s.whatsapp.net": true,
-        "51934000622@s.whatsapp.net": true,
-        "51934000622:1@s.whatsapp.net": true,
-        "51934000622:2@s.whatsapp.net": true,
-        "6285821680489@s.whatsapp.net": true
-      },
+      "6285866295942-1623004283@g.us": null,
       "120363024561384642@g.us": {
         "6289512871985@s.whatsapp.net": true,
         "6285866295942@s.whatsapp.net": true,
