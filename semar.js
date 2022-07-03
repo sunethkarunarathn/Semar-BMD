@@ -1,90 +1,69 @@
-const { getContentType } = require('@adiwajshing/baileys')
-	
+const { proto, getContentType } = require('@adiwajshing/baileys')
+const { getGroupAdmins } = require('./storage/functions.js')
+const fs = require('fs')
+
 module.exports = async (semar, denz, msg) => {
 try {
-console.log(msg)
 if (msg.key && msg.key.remoteJid === 'status@broadcast') return
-msg.message = (getContentType(msg.message) === 'ephemeralMessage') ? msg.message.ephemeralMessage.message : msg.message
 const pushname = msg.pushName || 'Nama Tidak Terdeteksi'
 const type = getContentType(msg.message)
 const content = JSON.stringify(msg.message)
 const from = msg.key.remoteJid
 const quoted = type == 'extendedTextMessage' && msg.message.extendedTextMessage.contextInfo != null ? msg.message.extendedTextMessage.contextInfo.quotedMessage || [] : []
-const body = (type === 'conversation') ? msg.message.conversation : (type === 'extendedTextMessage') ? msg.message.extendedTextMessage.text : (type == 'imageMessage') && msg.message.imageMessage.caption ? msg.message.imageMessage.caption : (type == 'videoMessage') && msg.message.videoMessage.caption ? msg.message.videoMessage.caption : ''
+const body = (type === 'conversation' && msg.message.conversation) ? msg.message.conversation : (type == 'imageMessage') && msg.message.imageMessage.caption ? msg.message.imageMessage.caption : (type == 'documentMessage') && msg.message.documentMessage.caption ? msg.message.documentMessage.caption : (type == 'videoMessage') && msg.message.videoMessage.caption ? msg.message.videoMessage.caption : (type == 'extendedTextMessage') && msg.message.extendedTextMessage.text ? msg.message.extendedTextMessage.text : (type == 'buttonsResponseMessage' && msg.message.buttonsResponseMessage.selectedButtonId) ? msg.message.buttonsResponseMessage.selectedButtonId : (type == 'templateButtonReplyMessage') && msg.message.templateButtonReplyMessage.selectedId ? msg.message.templateButtonReplyMessage.selectedId : ''
+const prefix = /^[°zZ#$@*+,.?=''():√%!¢£¥€π¤ΠΦ_&><`™©®Δ^βα~¦|/\\©^]/.test(body) ? body.match(/^[°zZ#$@*+,.?=''():√%¢£¥€π¤ΠΦ_&><!`™©®Δ^βα~¦|/\\©^]/gi) : ''
 const isCmd = body.startsWith(prefix)
 const command = isCmd ? body.slice(prefix.length).trim().split(' ').shift().toLowerCase() : ''
 const args = body.trim().split(/ +/).slice(1)
-const q = args.join(' ')
+const dn = args.join(' ')
 const isGroup = from.endsWith('@g.us')
-const sender = msg.key.fromMe ? (semar.user.id.split(':')[0]+'@s.whatsapp.net' || semar.user.id) : (msg.key.participant || msg.key.remoteJid)
-const senderNumber = sender.split('@')[0]
 const botNumber = semar.user.id.split(':')[0]
+const sender = msg.key.fromMe ? (semar.user.id.split(':')[0]+'@s.whatsapp.net' || semar.user.id) : (msg.key.participant || msg.key.remoteJid)
+const groupMetadata = isGroup ? await semar.groupMetadata(from) : ''
+const groupName = isGroup ? groupMetadata.subject : ''
+const groupId = isGroup ? groupMetadata.id : ''
+const groupMembers = isGroup ? groupMetadata.participants : ''
+const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
+const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
+const isGroupAdmins = groupAdmins.includes(sender)
+const senderNumber = sender.split('@')[0]
 const isSaya = botNumber.includes(senderNumber)
 const isOwner = nomorOwner.includes(senderNumber) || isSaya
 const reply = async(teks) => {await semar.sendMessage(from,{text: teks},{quoted:msg})}
 
-switch (command) {
-case 'p':
-              const buttons = [
-  {buttonId: `${prefix}menu`, buttonText: {displayText: 'MENU'}, type: 1},
-  {buttonId: 'id2', buttonText: {displayText: 'Button 2'}, type: 1},
-  {buttonId: 'id3', buttonText: {displayText: 'Button 3'}, type: 1}
-]
+const sendButMessage = (id, text1, footer1, but = [], options = {}) => {
+const buttonMessage = {text: text1, footer: footer1, buttons: but, headerType: 1}
+semar.sendMessage(id, buttonMessage, options)}
 
-const buttonMessage = {
-    text: "Hi it's button aeea",
-    footerText: 'Hello World',
-    buttons: buttons,
-    headerType: 1
-}
-semar.sendMessage(from, buttonMessage)
+const sendButTemplate = (id, text1, footer1, but = [], options = {}) => {
+const templateMessage = {text: text1,footer: footer1,templateButtons: but}
+semar.sendMessage(id, templateMessage, options)}
+
+const sendLstMessage = (id, text1, footer1, title1, buttonText1, sec  = [], options = {}) => {
+const listMessage = {text: text1,footer: footer1,title: title1,buttonText: buttonText1, sections: sec}
+semar.sendMessage(id, listMessage, options)}
+
+const sendRacMessage = (id, text1 = {}) => {
+const reactionMessage = {react: {text: text1,key: msg.key}}
+semar.sendMessage(id, reactionMessage)}
+
+switch (command) {
+case 'p1':
+sendButMessage(from, 'test', 'test', [{buttonId: `${prefix}p1`, buttonText: {displayText: 'Button 1'}, type: 1},{buttonId: 'id2', buttonText: {displayText: 'Button 2'}, type: 1},{buttonId: 'id3', buttonText: {displayText: 'Button 3'}, type: 1}], {quoted:msg})
 break
 
-case 'temp':{
-   const templateMessage = {
-    text: "Hi it's a template message",
-    footer: 'Hello World',
-    templateButtons: [
-     {
-     index: 1, 
-      urlButton: {
-       displayText: 'My Github', 
-       url: 'https://github.com/dcode-denpa'
-      } },
-     {
-     index: 2, 
-     callButton: {
-      displayText: 'Owner', 
-       phoneNumber: '6285866295842'
-      } },
-     {
-     index: 3, 
-      quickReplyButton: {
-       displayText: 'Click', 
-       id: '#tes'
-       } },
-    { 
-     index: 4, 
-      quickReplyButton: {
-       displayText: 'Click2', 
-       id: '#tes'
-       } },
-     {
-     index: 5, 
-      quickReplyButton: {
-       displayText: 'Click', 
-       id: '#tes'
-       } },
-     ],
-    }
-   const sendm =  semar.sendMessage(
-    from, 
-    templateMessage
-    )
-   }
-  break
-  
+case 'tutor':
+sendButTemplate(from, 'Follow Ig Gw Bang', ':v', [{index: 1, urlButton: {displayText: 'Link ig', url: 'https://instagram.com/dcodedenpa'}},{index: 2, callButton: {displayText: 'Nomor Gw', phoneNumber: '6285866295942'}},{index: 3, quickReplyButton: {displayText: 'Ok', id: `0`}}])
+break
+
+case 'p3':
+sendLstMessage(from, 'test', 'test', 'test', 'test', [{title: "Section 1",rows: [{title: "Option 1", rowId: "option1"},{title: "Option 2", rowId: "option2", description: "This is a description"}]},{title: "Section 2",rows: [{title: "Option 3", rowId: "option3"},{title: "Option 4", rowId: "option4", description: "This is a description V2"}]}])
+break
+
+case 'react':
+sendRacMessage(from, `${dn}`)
+break
+
 default:
 }} catch (e) {
-var error = String(e)
-console.log(error)}}
+console.log(e)}}

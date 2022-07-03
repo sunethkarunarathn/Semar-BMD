@@ -1,10 +1,11 @@
-const { default: makeWASocket, DisconnectReason, useSingleFileAuthState } = require('@adiwajshing/baileys')
+const { default: makeWASocket, DisconnectReason, useSingleFileAuthState} = require('@adiwajshing/baileys')
+const { state, saveState } = useSingleFileAuthState('./session.json')
 const fs = require('fs')
 const pino = require('pino')
-const { state, saveState } = useSingleFileAuthState('./session.json')
-
 const connectKeWA = () => {
 const semar = makeWASocket({logger:pino({level:'silent'}),printQRInTerminal: true,auth: state})
+let d = new Date
+let locale = 'en'
 
 require('./semar.js')
 nocache('./semar.js', module => console.log(`"${module}" Updated!`))
@@ -12,8 +13,8 @@ nocache('./semar.js', module => console.log(`"${module}" Updated!`))
 semar.ev.on('messages.upsert', async denz => {
 if (!denz.messages) return
 msg = denz.messages[0]
-prefix = '.'
 nomorOwner = ['6285866295942']
+console.log(msg)
 require("./semar")(semar, denz, msg)})
 
 semar.ev.on('connection.update', (update) => {
