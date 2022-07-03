@@ -52,8 +52,8 @@ case 'p1':
 sendButMessage(from, 'test', 'test', [{buttonId: `${prefix}p1`, buttonText: {displayText: 'Button 1'}, type: 1},{buttonId: 'id2', buttonText: {displayText: 'Button 2'}, type: 1},{buttonId: 'id3', buttonText: {displayText: 'Button 3'}, type: 1}], {quoted:msg})
 break
 
-case 'tutor':
-sendButTemplate(from, 'Follow Ig Gw Bang', ':v', [{index: 1, urlButton: {displayText: 'Link ig', url: 'https://instagram.com/dcodedenpa'}},{index: 2, callButton: {displayText: 'Nomor Gw', phoneNumber: '6285866295942'}},{index: 3, quickReplyButton: {displayText: 'Ok', id: `0`}}])
+case 'p2':
+sendButTemplate(from, 'test', 'test', [{index: 1, urlButton: {displayText: 'test', url: 'https://'}},{index: 2, callButton: {displayText: 'test', phoneNumber: '6285'}},{index: 3, quickReplyButton: {displayText: 'test', id: `0`}}])
 break
 
 case 'p3':

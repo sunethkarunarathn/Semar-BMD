@@ -3,7 +3,7 @@ const { state, saveState } = useSingleFileAuthState('./session.json')
 const fs = require('fs')
 const pino = require('pino')
 const connectKeWA = () => {
-const semar = makeWASocket({logger:pino({level:'silent'}),printQRInTerminal: true,auth: state})
+const semar = makeWASocket({logger:pino({level:'silent'}),printQRInTerminal: true,auth: state,browser: ["Semar Bot Multi Device", "Dekstop", "3.0"]})
 let d = new Date
 let locale = 'en'
 
