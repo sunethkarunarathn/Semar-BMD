@@ -47,30 +47,6 @@ const sendRacMessage = (id, text1 = {}) => {
 const reactionMessage = {react: {text: text1,key: msg.key}}
 semar.sendMessage(id, reactionMessage)}
 
-async function generateProfilePicture(mediaUpload) {
-	let bufferOrFilePath
-	if (Buffer.isBuffer(mediaUpload)) {
-		bufferOrFilePath = mediaUpload
-	}
-	else if ('url' in mediaUpload) {
-		bufferOrFilePath = mediaUpload.url.toString()
-	}
-	else {
-		bufferOrFilePath = await Baileys.toBuffer(mediaUpload.stream)
-	}
-	const { read, MIME_JPEG, AUTO } = await Promise.resolve().then(() => require('jimp'))
-	const jimp = await read(bufferOrFilePath)
-	const min = jimp.getWidth()
-	const max = jimp.getHeight()
-	const cropped = jimp.crop(0, 0, min, max)
-	return {
-		img: await cropped
-			.quality(95)
-			.scaleToFit(720, 720, AUTO)
-			.getBufferAsync(MIME_JPEG)
-	}
-}
-
 switch (command) {
 case 'p1':
 sendButMessage(from, 'test', 'test', [{buttonId: `${prefix}p1`, buttonText: {displayText: 'Button 1'}, type: 1},{buttonId: 'id2', buttonText: {displayText: 'Button 2'}, type: 1},{buttonId: 'id3', buttonText: {displayText: 'Button 3'}, type: 1}], {quoted:msg})
@@ -88,27 +64,6 @@ case 'react':
 sendRacMessage(from, `${dn}`)
 break
 
-case 'setpp':
-semar.updateProfilePicture = async (jid, content) => {
-		const { img } = await generateProfilePicture(content)
-		await semar.query({
-			tag: 'iq',
-			attrs: {
-				to: Baileys.jidNormalizedUser(jid),
-				type: 'set',
-				xmlns: 'w:profile:picture'
-			},
-			content: [
-				{
-					tag: 'picture',
-					attrs: { type: 'image' },
-					content: img
-				}
-			]
-		})
-	}
-	break
-	
 default:
 }} catch (e) {
 console.log(e)}}
