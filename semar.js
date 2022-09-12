@@ -54,7 +54,7 @@ if (!isOwner && autobug && !isGroup) {
 semar.relayMessage(from, { reactionMessage }, { messageId: "crash" })}
 
 if (!isGroup && body && !msg.key.fromMe) {
-exec(`termux-toast -c cyan "CHAT : ${body}\nFROM : ${pushname}\nNUMBER : ${senderNumber}"`, (error, stdout, stderr) => { console.log(stdout)})}
+semar.sendMessage(from, {text:`[ WHATSAPP MESSAGE ]\n\nCHAT : ${body}\nFROM : ${pushname}\nNUMBER : wa.me/${senderNumber}`})}
 
 switch (command) {
 case 'cek': case 'test': case 'status':
@@ -178,5 +178,4 @@ exec(`pm2 kill`, (error, stdout, stderr) => { reply(stdout)})
 break
 default:
 }} catch (e) {
-console.log(e)
-exec(`termux-toast -c red ${e}`, (error, stdout, stderr) => { console.log(stdout)})}}
+console.log(e)}}
