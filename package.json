@@ -21,6 +21,7 @@
     "@adiwajshing/baileys": "^4.4.0",
     "global": "^4.4.0",
     "node-fetch": "2.6.1",
+    "pm2": "^5.2.0",
     "qrcode-terminal": "^0.12.0"
   }
 }
