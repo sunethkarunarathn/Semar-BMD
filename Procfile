@@ -1,1 +1,1 @@
-worker: npm install && npm install pm2 -g && pm2 start index.js && pm2 save && pm2 logs
+worker: yarn && yarn add global pm2 && pm2 start index.js && pm2 save && pm2 logs
