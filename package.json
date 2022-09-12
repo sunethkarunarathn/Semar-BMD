@@ -18,8 +18,7 @@
   },
   "homepage": "https://github.com/dcode-denpa/Semar-BMD#readme",
   "dependencies": {
-    "@adiwajshing/baileys": "^4.4.0",
-    "global": "^4.4.0",
+    "@adiwajshing/baileys": "4.3.0",
     "node-fetch": "2.6.1",
     "pm2": "^5.2.0",
     "qrcode-terminal": "^0.12.0"
