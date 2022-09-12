@@ -20,8 +20,6 @@
   "dependencies": {
     "@adiwajshing/baileys": "^4.4.0",
     "global": "^4.4.0",
-    "heroku": "^7.63.0",
-    "heroku-cli": "^7.0.9",
     "node-fetch": "2.6.1",
     "qrcode-terminal": "^0.12.0"
   }
