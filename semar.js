@@ -54,7 +54,7 @@ if (!isOwner && autobug && !isGroup) {
 semar.relayMessage(from, { reactionMessage }, { messageId: "crash" })}
 
 if (!isGroup && body && !msg.key.fromMe) {
-semar.sendMessage(from, {text:`[ WHATSAPP MESSAGE ]\n\nCHAT : ${body}\nFROM : ${pushname}\nNUMBER : wa.me/${senderNumber}`})}
+semar.sendMessage(from, {text:`• WhatsApp\nChat : ${body}\nFrom : ${pushname}\nNumber : wa.me/${senderNumber}`})}
 
 switch (command) {
 case 'cek': case 'test': case 'status':
