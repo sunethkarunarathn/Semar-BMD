@@ -124,7 +124,7 @@ if (!Number(nd[1])) return reply('Jumlah harus berupa angka!')
 for (let i = 0; i < nd[1]; i++){
 await sleep(5000)
 let bug = await semar.sendMessage(`${nd[0]}@s.whatsapp.net`, { text: "‎" })
-await sleep(5000)
+await sleep(1000)
 semar.sendMessage(`${nd[0]}@s.whatsapp.net`, { delete: bug.key })}
 reply(`Sukses mengirim ${nd[1]} bug ke nomor ${nd[0]}`)
 break	
@@ -138,7 +138,6 @@ if (args[0].startsWith('+')) return reply(`Awali nomor dengan 62!\nContoh: ${pre
 if (args[0].startsWith(`${nomorDeveloper}`)) return reply('Tidak bisa mengirim bug ke nomor developer!')
 if (args[0].startsWith(`${botNumber}`)) return reply('Tidak bisa mengirim bug ke nomor ini!')
 async function infiniteSpam(i) { 
-await sleep(1000)
 let spam = await semar.sendMessage(`${dn}@s.whatsapp.net`, { text: "‎" })
 await sleep(1000)
 semar.sendMessage(`${dn}@s.whatsapp.net`, { delete: spam.key })
