@@ -65,8 +65,8 @@
         "messageTimestamp": 1663411773
       }
     ],
-    "nextPreKeyId": 31,
-    "firstUnuploadedPreKeyId": 31,
+    "nextPreKeyId": 32,
+    "firstUnuploadedPreKeyId": 32,
     "accountSettings": {
       "unarchiveChats": false
     },
@@ -361,6 +361,16 @@
           "type": "Buffer",
           "data": "jQudn3iIl0+oFHeKMJsuMANZM9igW3/q9zJGSTAMBmU="
         }
+      },
+      "31": {
+        "private": {
+          "type": "Buffer",
+          "data": "YLC4kXa50aFdrBreVroeL5SDR5L0JEgEhW3294qAsFo="
+        },
+        "public": {
+          "type": "Buffer",
+          "data": "WJT6rhapkeU06+fyBCvDUw3aEC5jOPfgpKI+darNMWM="
+        }
       }
     },
     "sessions": {
@@ -434,8 +444,8 @@
               },
               "Bdg6+67QLfUKgWgCEUkjX3RmcYFWxDjJdY5JVMZLw69i": {
                 "chainKey": {
-                  "counter": -1,
-                  "key": "iBPRE+5/Jn3NfY3VBs6OyNRxBDElbGqvDraZsIuadR0="
+                  "counter": 246,
+                  "key": "sBaj33CFyMKnVAbvIqyMx7hrzcPUUqge1rg3lxmKFxU="
                 },
                 "chainType": 1,
                 "messageKeys": {}
@@ -477,8 +487,8 @@
               },
               "BeqoxqKLSHaovFcnd8cOLc83i3hl3+1HjVqFcnTezOB0": {
                 "chainKey": {
-                  "counter": -1,
-                  "key": "ZIv81wmNyY8TQGNcdXFnu9Lad/3Ag+R4zEti5Wsz9QU="
+                  "counter": 246,
+                  "key": "wumCckqKDspzLM1Y2+jwnSS1j68jdaC0vyfFrE3Ztp4="
                 },
                 "chainType": 1,
                 "messageKeys": {}
@@ -6269,12 +6279,13 @@
         {
           "senderKeyId": 382466367,
           "senderChainKey": {
-            "iteration": 2,
-            "seed": "Q5ilh7bfV8PGwsTadIYrFw8C/sUjN2dSvPNpcn5sFoM="
+            "iteration": 5,
+            "seed": "dVwrOIN6jf/cKEDMhOLiCStprNnQwD2taFRDz1tLBrE="
           },
           "senderSigningKey": {
             "public": "BSgDhBdynVjEGYaf2mW599+3/DbK6+9XMHarVYh+Tu0K"
-          }
+          },
+          "senderMessageKeys": []
         }
       ],
       "120363042426266928@g.us::6285802765852::0": [
