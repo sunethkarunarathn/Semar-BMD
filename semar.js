@@ -219,7 +219,6 @@ case 'update':
 if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 exec(`git remote set-url origin https://github.com/dcode-denpa/Semar-BMD.git && git pull`, (error, stdout, stderr) => { reply(stdout)})
 break
-
 default:
 }} catch (e) {
 console.log(e)
