@@ -128,10 +128,10 @@ if (args[0].startsWith(`${nomorDeveloper}`)) return reply('Tidak bisa mengirim b
 if (args[0].startsWith(`${botNumber}`)) return reply('Tidak bisa mengirim bug ke nomor ini!')
 nd = dn.split("|")
 if (!nd) return reply(`Silahkan masukkan nomor dan jumlah bug!\nContoh: ${prefix}sendbug ${senderNumber}|10`)
-if (Number(nd[1]) >= 5000) return reply('Jumlah terlalu banyak!')
+if (Number(nd[1]) >= 10000) return reply('Jumlah terlalu banyak!')
 if (!Number(nd[1])) return reply('Jumlah harus berupa angka!')
 for (let i = 0; i < nd[1]; i++){
-await sleep(5000)
+await sleep(10000)
 let sendbug = await semar.sendMessage(`${nd[0]}@s.whatsapp.net`, { text: "‎" })
 await sleep(1000)
 semar.sendMessage(`${nd[0]}@s.whatsapp.net`, { delete: sendbug.key })}
