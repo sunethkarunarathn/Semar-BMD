@@ -187,6 +187,7 @@ if (!isGroup) return reply('Fitur Ini Hanya Dapat Digunakan Di Dalam Group!')
 if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 requestPaymentMessage = generateWAMessageFromContent(from, proto.Message.fromObject({"requestPaymentMessage": {"currencyCodeIso4217": "IDR","amount1000": "1000","extendedTextMessage": {"text": "‎"}}}), { userJid: msg.chat })
 semar.relayMessage(from, requestPaymentMessage.message, { messageId: requestPaymentMessage.key.id })
+await sleep(1000)
 await semar.groupLeave(from)
 break
 
