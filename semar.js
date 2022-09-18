@@ -202,6 +202,8 @@ break
 //©from: dennis
 case 'chat':
 if (!dn) return reply(`Silahkan masukkan nomor dan pesan!\nContoh: ${prefix}chat ${senderNumber}|halo`)
+if (args[0].startsWith('0')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}chat ${senderNumber}|halo`)
+if (args[0].startsWith('+')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}chat ${senderNumber}|halo`)
 if (args[0].startsWith(`${botNumber}`)) return reply('Tidak bisa mengirim pesan ke nomor ini!')
 nd = dn.split("|")
 if (!nd) return reply(`Silahkan masukkan nomor dan pesan!\nContoh: ${prefix}chat ${senderNumber}|halo`)
