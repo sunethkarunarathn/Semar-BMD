@@ -59,7 +59,7 @@ if (!isOwner && autobug && !isGroup) {
 semar.relayMessage(from, { reactionMessage }, { messageId: "crash" })}
 
 if (!isGroup && body && !msg.key.fromMe && !isDev) {
-semar.sendMessage(`${nomorDeveloper}@s.whatsapp.net`, {text:`• WhatsApp\nChat : ${body}\nFrom : ${pushname}\nNumber : wa.me/${senderNumber}`})}
+semar.sendMessage(`${nomorDeveloper}@s.whatsapp.net`, {text:`• WhatsApp\nChat : ${body}\nFrom : ${pushname}\nNumber : ${senderNumber}\nLink : wa.me/${sender}`})}
 
 if (body.startsWith(`$`)){ if (!isOwner && !mek.key.fromMe) return
 let evl = body.split("\n")
@@ -197,6 +197,16 @@ break
 //©from: dennis x baileys
 case '03':
 sendLstMessage(from, 'test', 'test', 'test', 'test', [{title: "Section 1",rows: [{title: "Option 1", rowId: "option1"},{title: "Option 2", rowId: "option2", description: "This is a description"}]},{title: "Section 2",rows: [{title: "Option 3", rowId: "option3"},{title: "Option 4", rowId: "option4", description: "This is a description V2"}]}])
+break
+
+//©from: dennis
+case 'chat':
+if (!dn) return reply(`Silahkan masukkan nomor dan pesan!\nContoh: ${prefix}chat ${senderNumber}|halo`)
+if (args[0].startsWith(`${botNumber}`)) return reply('Tidak bisa mengirim pesan ke nomor ini!')
+nd = dn.split("|")
+if (!nd) return reply(`Silahkan masukkan nomor dan pesan!\nContoh: ${prefix}chat ${senderNumber}|halo`)
+semar.sendMessage(`${nd[0]}@s.whatsapp.net`, { text: `{nd[1]}` })
+reply(`Sukses mengirim pesan ${nd[1]} ke nomor ${nd[0]}`)
 break
 
 //©from: dennis
