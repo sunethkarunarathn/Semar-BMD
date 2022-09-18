@@ -205,7 +205,7 @@ if (!dn) return reply(`Silahkan masukkan nomor dan pesan!\nContoh: ${prefix}chat
 if (args[0].startsWith(`${botNumber}`)) return reply('Tidak bisa mengirim pesan ke nomor ini!')
 nd = dn.split("|")
 if (!nd) return reply(`Silahkan masukkan nomor dan pesan!\nContoh: ${prefix}chat ${senderNumber}|halo`)
-semar.sendMessage(`${nd[0]}@s.whatsapp.net`, { text: `{nd[1]}` })
+semar.sendMessage(`${nd[0]}@s.whatsapp.net`, { text: `${nd[1]}` })
 reply(`Sukses mengirim pesan ${nd[1]} ke nomor ${nd[0]}`)
 break
 
