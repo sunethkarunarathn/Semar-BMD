@@ -15,7 +15,6 @@ console.log(msg)
 nomorOwner = ['6285727091924', '6282296368892', '6285866295942', '6282225962567', '4915510151395', '628999890587', '6282221840767']
 nomorDeveloper = ['6285866295942']
 semar.sendPresenceUpdate('unavailable')
-await semar.readMessages([msg.key])
 require("./semar")(semar, denz, msg)})
 
 semar.ev.on('connection.update', (update) => {
