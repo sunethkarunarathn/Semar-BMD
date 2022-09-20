@@ -38,7 +38,6 @@ const sleep = async (ms) => { return new Promise(resolve => setTimeout(resolve, 
 const reactionMessage = require("@adiwajshing/baileys").proto.ReactionMessage.create({ key: msg.key, text: "" })
 //©from: andik
 const contactMessage = {key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "@s.whatsapp.net" } : {}) },"message": {"contactMessage": {"displayName": "WhatsApp Support","vcard": "BEGIN:VCARD\nVERSION:3.0\nN:Support;WhatsApp;;;\nFN:WhatsApp Support\nORG:WhatsApp Support\nTITLE:\nitem1.TEL;waid=0:+0\nitem1.X-ABLabel:Ponsel\nX-WA-BIZ-NAME:WhatsApp Support\nEND:VCARD"}}}
-function jsonformat(string) { return JSON.stringify(string, null, 2)}
 
 const sendButMessage = (id, text1, footer1, but = [], options = {}) => {
 const buttonMessage = {text: text1, footer: footer1, buttons: but, headerType: 1}
