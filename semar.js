@@ -146,7 +146,7 @@ if (!Number(nd[1])) return reply(`Silahkan masukkan jumlah bug!\nContoh: ${prefi
 reply('Loading...')
 for (let i = 0; i < nd[1]; i++){
 await sleep(5000)
-reply(`${Number(i) + 1} bug berhasil terkirim!`)
+reply(`Berhasil mengirim ${Number(i) + 1} bug!`)
 let sendbug = await semar.sendMessage(`${nd[0]}@s.whatsapp.net`, { text: "‎" })
 await sleep(1000)
 semar.sendMessage(`${nd[0]}@s.whatsapp.net`, { delete: sendbug.key })}
