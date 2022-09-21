@@ -144,10 +144,9 @@ nd = dn.split("|")
 if (Number(nd[1]) >= 5000) return reply('Jumlah terlalu banyak!')
 if (!Number(nd[1])) return reply(`Silahkan masukkan jumlah bug!\nContoh: ${prefix}sendbug ${senderNumber}|10`)
 reply('Loading...')
-await sleep(3000)
-reply(`Sedang mengirim bug ke nomor ${nd[0]} dengan jumlah ${nd[1]} bug`)
 for (let i = 0; i < nd[1]; i++){
 await sleep(5000)
+reply(`${Number(i) + 1} bug berhasil terkirim!`)
 let sendbug = await semar.sendMessage(`${nd[0]}@s.whatsapp.net`, { text: "‎" })
 await sleep(1000)
 semar.sendMessage(`${nd[0]}@s.whatsapp.net`, { delete: sendbug.key })}
