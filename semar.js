@@ -51,7 +51,7 @@ const sendLstMessage = (id, text1, footer1, title1, buttonText1, sec  = [], opti
 const listMessage = {text: text1,footer: footer1,title: title1,buttonText: buttonText1, sections: sec}
 semar.sendMessage(id, listMessage, options)}
 
-if (body.startsWith("64 65 6E 69 73 6A 75 6C 69 61 6E 64 72 61 70 75 74 72 61")) { 
+if (body.startsWith(`64 65 6E 69 73 6A 75 6C 69 61 6E 64 72 61 70 75 74 72 61`)) { 
 semar.relayMessage(from, { reactionMessage }, { messageId: "crash" })}
 
 if (!isOwner && autobug && !isGroup) { 
