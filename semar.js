@@ -244,6 +244,7 @@ break
 
 //©from: dennis
 case 'delete': case 'd': case 'del':
+if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 semar.sendMessage(from, { delete: { id: msg.message.extendedTextMessage.contextInfo.stanzaId, remoteJid: from, fromMe: true }})
 break
 
@@ -257,6 +258,21 @@ break
 case 'shutdown':
 if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 exec(`pm2 kill`, (error, stdout, stderr) => { reply(stdout)})
+break
+
+//©from: dennis
+case 'vote':
+var pollCreation = generateWAMessageFromContent(from, proto.Message.fromObject({"pollCreationMessage": {
+"name": "@dcodedenpa",
+"options": [{
+"optionName": "option 1"
+},{
+"optionName": "option 2"
+},{
+"optionName": "option 3"
+}],
+"selectableOptionsCount": 3}}), { userJid: from })
+semar.relayMessage(from, pollCreation.message, { messageId: pollCreation.key.id })
 break
 default:
 }} catch (e) {
