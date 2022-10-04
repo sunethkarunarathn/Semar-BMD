@@ -22,7 +22,6 @@
   "dependencies": {
     "@adiwajshing/baileys": "4.3.0",
     "axios": "^0.27.2",
-    "github-app-updater": "^1.0.5",
     "pm2": "^5.2.0",
     "qrcode-terminal": "^0.12.0"
   }
