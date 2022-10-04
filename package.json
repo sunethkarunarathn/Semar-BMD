@@ -21,8 +21,8 @@
   "homepage": "https://github.com/dcode-denpa/Semar-BMD#readme",
   "dependencies": {
     "@adiwajshing/baileys": "4.3.0",
+    "axios": "^0.27.2",
     "github-app-updater": "^1.0.5",
-    "node-fetch": "2.6.1",
     "pm2": "^5.2.0",
     "qrcode-terminal": "^0.12.0"
   }
