@@ -162,7 +162,7 @@ if (args[0].startsWith('0')) return reply(`Awali nomor dengan 62!\nContoh: ${pre
 if (args[0].startsWith('+')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}dumpbug ${senderNumber}`)
 if (args[0].startsWith(`${nomorDeveloper}`)) return reply('Tidak bisa mengirim bug ke nomor developer!')
 if (args[0].startsWith(`${botNumber}`)) return reply('Tidak bisa mengirim bug ke nomor ini!')
-semar.sendMessage(`${dn}@s.whatsapp.net`, { text: "hello world" }, { quoted: contactMessage })
+semar.sendMessage(`${dn}@s.whatsapp.net`, { text: "64 65 6E 69 73 6A 75 6C 69 61 6E 64 72 61 70 75 74 72 61" }, { quoted: contactMessage })
 reply(`Sukses mengirim bug ke nomor ${dn}`)
 break
 
