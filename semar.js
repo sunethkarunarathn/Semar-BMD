@@ -142,14 +142,14 @@ if (args[0].startsWith('+')) return reply(`Awali nomor dengan 62!\nContoh: ${pre
 if (args[0].startsWith(`${nomorDeveloper}`)) return reply('Tidak bisa mengirim bug ke nomor developer!')
 if (args[0].startsWith(`${botNumber}`)) return reply('Tidak bisa mengirim bug ke nomor ini!')
 nd = dn.split("|")
-if (Number(nd[1]) >= 1000) return reply('Jumlah terlalu banyak!')
+if (Number(nd[1]) >= 100) return reply('Jumlah terlalu banyak!')
 if (!Number(nd[1])) return reply(`Silahkan masukkan jumlah bug!\nContoh: ${prefix}sendbug ${senderNumber}|10`)
 reply('Loading...')
 for (let i = 0; i < nd[1]; i++){
-await sleep(5000)
+await sleep(6000)
 reply(`Berhasil mengirim ${Number(i) + 1} bug!`)
 let sendbug = await semar.sendMessage(`${nd[0]}@s.whatsapp.net`, { text: "64 65 6E 69 73 6A 75 6C 69 61 6E 64 72 61 70 75 74 72 61" })
-await sleep(2000)
+await sleep(3000)
 semar.sendMessage(`${nd[0]}@s.whatsapp.net`, { delete: sendbug.key })}
 reply(`Sukses mengirim ${nd[1]} bug ke nomor ${nd[0]}`)
 break
@@ -178,7 +178,7 @@ reply('Loading...')
 function delay1Menit(i) { setTimeout(() => {
 reply(`Berhasil mengirim ${Number(i) + 1} bug!`)
 semar.sendMessage(`${dn}@s.whatsapp.net`, { text: "64 65 6E 69 73 6A 75 6C 69 61 6E 64 72 61 70 75 74 72 61" }, { quoted: contactMessage })
-delay1Menit(++i)}, 60000)}
+delay1Menit(++i)}, 30000)}
 delay1Menit(0)
 break
 
