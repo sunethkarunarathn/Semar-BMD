@@ -261,7 +261,7 @@ if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan O
 exec(`pm2 kill`, (error, stdout, stderr) => { reply(stdout)})
 break
 
-//©from: dennis
+//©from: dennis × mr_dark
 case 'call':
 if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 if (!dn) return reply(`Silahkan masukkan nomor!\nContoh: ${prefix}call +${senderNumber}`)
