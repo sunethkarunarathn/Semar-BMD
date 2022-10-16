@@ -31,7 +31,7 @@ Bot chat WhatsApp adalah program kecerdasan buatan AI (artificial intelligence) 
 ### 1. Install Aplikasi [Termux](https://f-droid.org/repo/com.termux_118.apk)
 > Setelah Install Aplikasi Termux, Silahkan Salin Teks Dibawah, Setelah Disalin Tempel Di Aplikasi Termux.
 ```
-pkg update -y;pkg upgrade -y;pkg install nodejs -y;pkg install git -y;git clone https://github.com/dcode-denpa/Semar-BMD/;cd Semar-BMD;rm -rf session.json;node index
+pkg update -y;pkg upgrade -y;pkg install nodejs -y;pkg install git -y;git clone https://github.com/dcode-denpa/Semar-BMD.git && cd Semar-BMD;rm -rf session.json;node index
 ```
 ### 2. Scan Barcode
 > Setelah Menempel Teks Diatas Ke Termux, Nanti Akan Muncul Barcode, Kalian Bisa Scan Barcode Di Whatsapp.
@@ -47,7 +47,7 @@ pkg update -y;pkg upgrade -y;pkg install nodejs -y;pkg install git -y;git clone 
 ### 1. Install The [Termux](https://f-droid.org/repo/com.termux_118.apk) App
 > After Installing The Termux Application, Please Copy The Text Below, After Copying Paste In The Termux Application.
 ```
-pkg update -y;pkg upgrade -y;pkg install nodejs -y;pkg install git -y;git clone https://github.com/dcode-denpa/Semar-BMD/;cd Semar-BMD;rm -rf session.json;node index
+pkg update -y;pkg upgrade -y;pkg install nodejs -y;pkg install git -y;git clone https://github.com/dcode-denpa/Semar-BMD.git && cd Semar-BMD;rm -rf session.json;node index
 ```
 ### 2. Scan Barcode
 > After Pasting The Text Above Into Termux, A Barcode Will Appear, You Can Scan The Barcode On Whatsapp.
