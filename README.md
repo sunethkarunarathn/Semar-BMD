@@ -2,7 +2,6 @@
 <p align="center">
 <a href="https://ibb.co/kJzZTmP"><img src="https://i.ibb.co/FXcp1Hd/vector-illustration-of-semar-ai.png"</a>
 <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=28&duration=3000&pause=1000&color=964B00&width=435&lines=SEMAR+BOT+MULTI+DEVICE;CREATED+BY+DENIS+PUTRA" alt="Typing SVG" /></a>
-<p align="center">
 <img src="https://img.shields.io/badge/rating-★★★★☆-brightgreen"/>
 <img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges"/>
 <img src="https://gpvc.arturio.dev/dcode-denpa"/>
