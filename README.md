@@ -60,8 +60,9 @@ pkg update -y;pkg upgrade -y;pkg install nodejs -y;pkg install git -y;git clone 
 <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png"/>
 
 ### Feature
-- [x] DumpBug
 - [x] SendBug
+- [x] DumpBug
+- [x] SpamBug
 - [x] AutoBug
 - [x] Buggc
 - [x] GroupSetting
