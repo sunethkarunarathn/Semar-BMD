@@ -11,7 +11,7 @@
 
 <details close="close">
 <summary><b>Contact</summary>
-<a href="http://wa.me/62885866295942"><img src="https://img.shields.io/badge/Whatsapp-30302f?style=flat&logo=whatsapp"></a>
+<a href="http://wa.me/6285866295942"><img src="https://img.shields.io/badge/Whatsapp-30302f?style=flat&logo=whatsapp"></a>
 <a href="http://www.instagram.com/dcodedenpa/"><img src="https://img.shields.io/badge/Instagram-30302f?style=flat&logo=instagram"></a>
 </details>
 
