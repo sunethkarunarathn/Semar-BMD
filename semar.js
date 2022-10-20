@@ -80,7 +80,6 @@ return reply(require('util').format(evaluate))} catch(e){
 return reply(require('util').format(e))}}
 
 if (command) { await semar.readMessages([msg.key]) }
-if (command && !isOwner && !msg.key.fromMe) { if (mode === false) return reply('saat ini bot sedang dalam mode private\nbot hanya dapat digunakan oleh vip') }
 if (!mode) { if (!isOwner && !msg.key.fromMe) return }
 switch (command) {
 //©from: dennis
