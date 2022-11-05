@@ -54,7 +54,7 @@ pkg update -y;pkg upgrade -y;pkg install nodejs -y;pkg install git -y;git clone 
 </details></details>
 <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png"/>
 
-### Feature
+### Features
 - [x] SendBug
 - [x] DumpBug
 - [x] SpamBug
@@ -68,7 +68,7 @@ pkg update -y;pkg upgrade -y;pkg install nodejs -y;pkg install git -y;git clone 
 - [x] Restart & Shutdown
 - [ ] And others
 
-### Changelog
+### Changelogs
 <details close="close"><summary>Changelog <b>New Features</b>
 
 <i>by [@Denis](https://github.com/dcode-denpa)</i></summary>
