@@ -69,14 +69,14 @@ pkg update -y;pkg upgrade -y;pkg install nodejs -y;pkg install git -y;git clone 
 - [ ] And others
 
 ### Changelogs
-<details close="close"><summary>Changelog <b>New Features</b>
+<details close="close"><summary>Updated <b>New Features</b>
 
 <i>by [@Denis](https://github.com/dcode-denpa)</i></summary>
 
 ```
 -
 ```
-</details><details close="close"><summary>Changelog <b>New Features</b>
+</details><details close="close"><summary>Updated <b>New Features</b>
 
 <i>by [@Nayla](https://github.com/yanz5008)</i></summary>
 
