@@ -86,6 +86,9 @@ pkg update -y;pkg upgrade -y;pkg install nodejs -y;pkg install git -y;git clone 
 ```
 .close
 ```
+```
+.bugpay
+```
 </details>
 
 ### Developer
