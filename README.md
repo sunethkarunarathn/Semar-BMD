@@ -69,22 +69,10 @@ pkg update -y;pkg upgrade -y;pkg install nodejs -y;pkg install git -y;git clone 
 - [ ] And others
 
 ### Changelogs
-<details close="close"><summary>Updated <b>New Features</b>
-
-<i>by [@Denis](https://github.com/dcode-denpa)</i></summary>
+<details open="open"><summary>Updated <b>New Features</b></summary>
 
 ```
 -
-```
-</details><details close="close"><summary>Updated <b>New Features</b>
-
-<i>by [@Nayla](https://github.com/yanz5008)</i></summary>
-
-```
-.open
-```
-```
-.close
 ```
 </details>
 
@@ -94,5 +82,4 @@ pkg update -y;pkg upgrade -y;pkg install nodejs -y;pkg install git -y;git clone 
 [Denis](https://github.com/dcode-denpa) | [Nayla](https://github.com/yanz5008)
 
 <sup><b>free to use, don't sell</b></sup> <img src="https://www.animatedimages.org/data/media/2113/animated-3d-smiley-image-0011.gif" width="30">
-
 [𐅉 back-to-top 𐅉](#dcodedenpa)
