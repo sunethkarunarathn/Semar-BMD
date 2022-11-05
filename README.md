@@ -17,9 +17,7 @@ Bot chat WhatsApp adalah program kecerdasan buatan AI (artificial intelligence) 
 <summary>Bot Ini Dikembangkan Oleh <b>Denis Putra</b></summary>
 <a href="http://wa.me/6285866295942"><img src="https://img.shields.io/badge/Whatsapp-30302f?style=flat&logo=whatsapp"></a>
 <a href="http://www.instagram.com/dcodedenpa/"><img src="https://img.shields.io/badge/Instagram-30302f?style=flat&logo=instagram"></a>
-</details>
-<details close="close">
-<summary>Tutorial Menginstall <b>Semar-BMD</b></summary>
+</details><details close="close"><summary>Tutorial Menginstall <b>Semar-BMD</b></summary>
 
 - `Select The Language`
 
@@ -39,9 +37,7 @@ pkg update -y;pkg upgrade -y;pkg install nodejs -y;pkg install git -y;git clone 
 > Saya Sarankan Jangan Menggunakan Whatsapp/Nomor Pribadi
 ***
 [𐅉 back-to-top 𐅉](#dcodedenpa)
-</details>
-<details close="close">
-<summary><i><b>English</b></i></summary>
+</details><details close="close"><summary><i><b>English</b></i></summary>
 
 ***
 ### 1. Install The [Termux](https://f-droid.org/repo/com.termux_118.apk) App
@@ -55,8 +51,7 @@ pkg update -y;pkg upgrade -y;pkg install nodejs -y;pkg install git -y;git clone 
 > I Suggest Don't Use Whatsapp/Personal Number
 ***
 [𐅉 back-to-top 𐅉](#dcodedenpa)
-</details>
-</details>
+</details></details>
 <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png"/>
 
 ### Feature
@@ -73,11 +68,31 @@ pkg update -y;pkg upgrade -y;pkg install nodejs -y;pkg install git -y;git clone 
 - [x] Restart & Shutdown
 - [ ] And others
 
+### Changelog
+<details close="close"><summary>Changelog <b>New Features</b>
+
+<i>by [@Denis](https://github.com/dcode-denpa)</i></summary>
+
+```
+-
+```
+</details><details close="close"><summary>Changelog <b>New Features</b>
+
+<i>by [@Nayla](https://github.com/yanz5008)</i></summary>
+
+```
+.open
+```
+```
+.close
+```
+</details>
+
 ### Developer
 [![](https://github.com/dcode-denpa.png?size=100)](https://github.com/dcode-denpa) | [![](https://github.com/yanz5008.png?size=100)](https://github.com/yanz5008) 
 ----|----
 [Denis](https://github.com/dcode-denpa) | [Nayla](https://github.com/yanz5008)
 
-<sup><b>kalau mau recode minimal kasih credit</b></sup> <img src="https://www.animatedimages.org/data/media/2113/animated-3d-smiley-image-0011.gif" width="30">
+<sup><b>free to use, don't sell</b></sup> <img src="https://www.animatedimages.org/data/media/2113/animated-3d-smiley-image-0011.gif" width="30">
 
 [𐅉 back-to-top 𐅉](#dcodedenpa)
