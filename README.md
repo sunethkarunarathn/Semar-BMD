@@ -69,7 +69,7 @@ pkg update -y;pkg upgrade -y;pkg install nodejs -y;pkg install git -y;git clone 
 - [ ] And others
 
 ### Changelogs
-<details open="open"><summary>Updated <b>New Features</b></summary>
+<details open="open"><summary>Added <b>New Features</b></summary>
 
 ```
 -
