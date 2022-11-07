@@ -157,7 +157,7 @@ if (args[0].startsWith(`${botNumber}`)) return reply('Tidak bisa mengirim bug ke
 nd = dn.split("|")
 if (Number(nd[1]) >= 100) return reply('Jumlah terlalu banyak!')
 if (!Number(nd[1])) return reply(`Silahkan masukkan jumlah bug!\nContoh: ${prefix}sendbug ${senderNumber}|10`)
-reply('Loading...')
+reply('Loading 3Second...')
 for (let i = 0; i < nd[1]; i++){
 await sleep(3000)
 reply(`Berhasil mengirim ${Number(i) + 1} bug!`)
@@ -189,9 +189,11 @@ if (args[0].startsWith('8')) return reply(`Awali nomor dengan 62!\nContoh: ${pre
 if (args[0].startsWith('+')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}spambug ${senderNumber}`)
 if (args[0].startsWith(`${nomorDeveloper}`)) return reply('Tidak bisa mengirim bug ke nomor developer!')
 if (args[0].startsWith(`${botNumber}`)) return reply('Tidak bisa mengirim bug ke nomor ini!')
-reply('Loading...')
+reply('Berhasil mengirim 1 bug!')
+semar.sendMessage(`${dn}@s.whatsapp.net`, { text: "64 65 6E 69 73 6A 75 6C 69 61 6E 64 72 61 70 75 74 72 61" }, { quoted: contactMessage })
+reply('Loading 1Minutes...')
 function delay1Menit(i) { setTimeout(() => {
-reply(`Berhasil mengirim ${Number(i) + 1} bug!`)
+reply(`Berhasil mengirim ${Number(i) + 2} bug!`)
 semar.sendMessage(`${dn}@s.whatsapp.net`, { text: "64 65 6E 69 73 6A 75 6C 69 61 6E 64 72 61 70 75 74 72 61" }, { quoted: contactMessage })
 delay1Menit(++i)}, 60000)}
 delay1Menit(0)
