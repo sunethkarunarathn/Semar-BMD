@@ -76,10 +76,5 @@ pkg update -y;pkg upgrade -y;pkg install nodejs -y;pkg install git -y;git clone 
 ```
 </details>
 
-### Developer
-[![](https://github.com/dcode-denpa.png?size=100)](https://github.com/dcode-denpa) | [![](https://github.com/yanz5008.png?size=100)](https://github.com/yanz5008) 
-----|----
-[Denis](https://github.com/dcode-denpa) | [Nayla](https://github.com/yanz5008)
-
 <sup><b>free to use, don't sell</b></sup> <img src="https://www.animatedimages.org/data/media/2113/animated-3d-smiley-image-0011.gif" width="30">
 [𐅉 back-to-top 𐅉](#dcodedenpa)
