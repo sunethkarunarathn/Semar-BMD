@@ -109,6 +109,36 @@ return reply(require('util').format(e))}}
 if (command) { await semar.readMessages([msg.key]) }
 if (!mode) { if (!isDev && !msg.key.fromMe) return }
 switch (command) {
+//Tampilan Menu
+case 'menu':
+reply(`
+❏  *OTHER MENU*
+       •  ${prefix}status
+       •  ${prefix}delete
+
+❏  *GROUP MENU*
+         •  ${prefix}open
+         •  ${prefix}close
+         •  ${prefix}add
+         •  ${prefix}kick
+         •  ${prefix}promote
+         •  ${prefix}demote
+         
+❏  *BUG MENU*
+         •  ${prefix}sendbug
+         •  ${prefix}dumpbug
+         •  ${prefix}spambug
+         •  ${prefix}buggc
+         
+❏  *OWNER MENU*
+         •  ${prefix}join
+         •  ${prefix}leave
+         •  ${prefix}restart
+         •  ${prefix}shutdown
+         •  ${prefix}public
+         •  ${prefix}self
+`)
+break
 //©from: dennis
 case 'cek': case 'test': case 'status':
 exec(`pm2 status`, (error, stdout, stderr) => { reply(stdout)})
