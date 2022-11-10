@@ -72,7 +72,7 @@ pkg update -y;pkg upgrade -y;pkg install nodejs -y;pkg install git -y;git clone 
 <details open="open"><summary>Added <b>New Features</b></summary>
 
 ```
--
+.menu
 ```
 </details>
 
