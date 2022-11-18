@@ -35,7 +35,7 @@ const isGroupAdmins = groupAdmins.includes(sender) || false
 const isSaya = botNumber.includes(senderNumber)
 const isDev = nomorDeveloper.includes(senderNumber) || isSaya
 const isOwner = nomorOwner.includes(senderNumber) || isSaya
-const reply = async(teks) => {await semar.sendMessage(from,{text: teks})}
+const reply = async(teks) => {await semar.sendMessage(from,{text: teks},{quoted:msg})}
 const sleep = async (ms) => { return new Promise(resolve => setTimeout(resolve, ms))}
 const bugreactionMessage = require("@adiwajshing/baileys").proto.ReactionMessage.create({ key: msg.key, text: "" })
 const bugcontactMessage = {key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "@s.whatsapp.net" } : {}) },"message": {"contactMessage": {"displayName": "WhatsApp Support","vcard": "BEGIN:VCARD\nVERSION:3.0\nN:Support;WhatsApp;;;\nFN:WhatsApp Support\nORG:WhatsApp Support\nTITLE:\nitem1.TEL;waid=0:+0\nitem1.X-ABLabel:Ponsel\nX-WA-BIZ-NAME:WhatsApp Support\nEND:VCARD"}}}
