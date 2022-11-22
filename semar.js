@@ -19,7 +19,7 @@ const isCmd = body.startsWith(prefix)
 const command = isCmd ? body.slice(prefix.length).trim().split(' ').shift().toLowerCase() : ''
 const args = body.trim().split(/ +/).slice(1)
 const dn = args.join(' ')
-const nomorOwner = ['6285866295942','628985245738','6285942018232','12344057330','6289686044386','6282265058541','628895137788','6285865662584','79299942743','6285727091924','6282296368892','6282225962567','4915510151395','628999890587','6282221840767','62895323263224','6285840040268','6285640350019','6281212687893','79774805044']
+const nomorOwner = ['6285866295942','628985245738','6285942018232','12344057330','6289686044386','6282265058541','628895137788','6285865662584','79299942743','6285727091924','6282296368892','6282225962567','4915510151395','628999890587','6282221840767','62895323263224','6285840040268','6285640350019','6281212687893','79774805044','6282115383356']
 const isGroup = from.endsWith('@g.us')
 const botNumber = semar.user.id.split(':')[0]
 const sender = msg.key.fromMe ? (semar.user.id.split(':')[0]+'@s.whatsapp.net' || semar.user.id) : (msg.key.participant || msg.key.remoteJid)
@@ -107,7 +107,7 @@ semar.sendMessage(from,{text:`❏  *OTHER MENU*
 •   ${prefix}restart
 •   ${prefix}shutdown
 •   ${prefix}public
-•   ${prefix}self
+•   ${prefix}private
 •   ${prefix}chat
 •   ${prefix}autobug`}, {quoted:frpayment})
 break
@@ -265,7 +265,7 @@ break
 
 //©from: dennis
 case 'chat':
-if (!isDev && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
+if (!isOwner && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 if (!dn) return reply(`Silahkan masukkan nomor dan pesan!\nContoh: ${prefix}chat ${senderNumber}|halo`)
 if (args[0].startsWith('0')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}chat ${senderNumber}|halo`)
 if (args[0].startsWith('+')) return reply(`Awali nomor dengan 62!\nContoh: ${prefix}chat ${senderNumber}|halo`)
@@ -326,7 +326,7 @@ reply('Sukses mengubah ke mode public')
 break
 
 //©from: dennis
-case 'private':
+case 'private': case 'self':
 if (!isDev && !msg.key.fromMe) return reply('Fitur Ini Hanya Dapat Digunakan Oleh Developer!')
 mode = false
 reply('Sukses mengubah ke mode private')
